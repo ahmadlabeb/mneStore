@@ -1,0 +1,86 @@
+﻿@model mneStore.Models.bills
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var couter = Model.items.Count;
+
+}
+
+<h3>تفاصيل الفاتوورة</h3>
+<hr class="uk-divider-icon">
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameBuy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameBuy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.billNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.billNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateBill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateBill)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <table class="uk-table uk-table-hover uk-table-divider uk-table-justify table-shadow ">
+        <thead>
+            <tr>
+                <th></th>
+                <th>اسم العنصر</th>
+                <th>وصف العنصر</th>
+                <th>brand</th>
+                <th>رقم التسلسلي</th>
+                <th>قارئ الباركود</th>
+                <th>تاريخ الادخال</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var itemBills in Model.items)
+            {
+
+                <tr>
+                    <td>@Html.DisplayFor(model => itemBills.nameItem)</td>
+                    <td>@Html.DisplayFor(model => itemBills.description)</td>
+                    <td>@Html.DisplayFor(model => itemBills.brand)</td>
+                    <td>@Html.DisplayFor(model => itemBills.serialNamber)</td>
+                    <td>@Html.DisplayFor(model => itemBills.barcode)</td>
+                    <td>@Html.DisplayFor(model => itemBills.bills.dateBill)</td>
+                    <td>
+                        <a href="~/items/Edit?id=@itemBills.id" uk-tooltip="تعديل عنصر الفاتورة" uk-icon="file-edit"></a>|
+                        <a href="~/items/Delete?id=@itemBills.id" uk-tooltip="title:حذف عنصر الفاتورة  ; pos: bottom-right" uk-icon="trash"></a>
+                        @*@Html.ActionLink("Edit", "Edit", new { id = itemBills.id },htmlAttributes:new { }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = itemBills.id })*@
+                    </td>
+                </tr>
+
+            }
+
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("تعديل الفاتورة", "Edit", new { id = Model.id },new {@class= "uk-button uk-button-default" }) 
+    <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف">
+        <span uk-icon="icon: reply"></span>
+    </a>
+</p>

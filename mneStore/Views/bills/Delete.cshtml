@@ -1,0 +1,52 @@
+﻿@model mneStore.Models.bills
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>انت على وشك حذف فاتورة !هل انت متاكد؟</h2>
+<div>
+    <h4></h4>
+    <hr class="uk-divider-icon">
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nameBuy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nameBuy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.billNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.billNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateBill)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateBill)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="uk-form-controls">
+            <input type="submit" value="حذف" class="uk-button uk-button-danger" /> |
+            <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف">
+                <span uk-icon="icon: reply"></span>
+            </a>
+        </div>
+    }
+</div>

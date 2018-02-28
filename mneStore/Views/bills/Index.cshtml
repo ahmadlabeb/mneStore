@@ -1,0 +1,50 @@
+﻿@model IEnumerable<mneStore.Models.bills>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>الصفحة الرئيسية للفواتير</h2>
+<hr class="uk-divider-icon">
+
+<p>
+    @Html.ActionLink("ادخال فاتورة", "Create",null,htmlAttributes:new { @class= "uk-button uk-button-primary" })
+</p>
+<table class="uk-table uk-table-hover uk-table-divider uk-table-striped  table-shadow">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nameBuy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.billNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateBill)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nameBuy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.billNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateBill)
+                </td>
+                <td>
+                    <a href="~/bills/Edit?id=@item.id" uk-icon="icon: file-edit"  uk-tooltip="title: تعديل; pos: right"></a>|
+                    <a href="~/bills/Details?id=@item.id" uk-icon="icon: tag"  uk-tooltip="title: تفاصيل الفاتورة; pos: top"></a>|
+                    <a href="~/bills/Delete?id=@item.id" uk-icon="icon: trash"  uk-tooltip="title: حذف فاتورة; pos: left"></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

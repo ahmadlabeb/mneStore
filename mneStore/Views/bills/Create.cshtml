@@ -1,0 +1,60 @@
+﻿@model mneStore.Models.bills
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="uk-form-horizontal uk-margin-large">
+        <h4>فاتورة</h4>
+        <hr class="uk-divider-icon">
+        @Html.ValidationSummary(true, "", new { @class = "uk-text-danger" })
+        <div class="uk-margin">
+            @Html.LabelFor(model => model.nameBuy, htmlAttributes: new { @class = "uk-form-label" })
+            <div class="uk-form-controls">
+                @Html.EditorFor(model => model.nameBuy, new { htmlAttributes = new { @class = "uk-input" } })
+                @Html.ValidationMessageFor(model => model.nameBuy, "", new { @class = "uk-text-danger" })
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            @Html.LabelFor(model => model.billNumber, htmlAttributes: new { @class = "uk-form-label" })
+            <div class="uk-form-controls">
+                @Html.EditorFor(model => model.billNumber, new { htmlAttributes = new { @class = "uk-input" } })
+                @Html.ValidationMessageFor(model => model.billNumber, "", new { @class = "uk-text-danger" })
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            @Html.LabelFor(model => model.currunciesId, htmlAttributes: new { @class = "uk-form-label" })
+            <div class="uk-form-controls">
+                @Html.DropDownList("currunciesId", null, htmlAttributes: new { @class = "uk-select" })
+                @Html.ValidationMessageFor(model => model.currunciesId, "", new { @class = "uk-text-danger" })
+            </div>
+        </div>
+        <div class="uk-margin">
+            @Html.LabelFor(model => model.dateBill, htmlAttributes: new { @class = "uk-form-label" })
+            <div class="uk-form-controls">
+                @Html.EditorFor(model => model.dateBill, new { htmlAttributes = new { @class = "uk-input" } })
+                @Html.ValidationMessageFor(model => model.dateBill, "", new { @class = "uk-text-danger" })
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <div class="uk-form-controls">
+                <input type="submit" value="انشاء" class="uk-button uk-button-primary" />
+                <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف">
+                    <span uk-icon="icon: reply"></span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+</div>

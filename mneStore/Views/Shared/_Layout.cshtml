@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <link href="~/Content/uikit.min.css" rel="stylesheet" />
+    <script src="~/Scripts/uikit.min.js"></script>
+    <script src="~/Scripts/uikit-icons.min.js"></script>
+    <link href="~/Content/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="uk-position-relative">
+        <nav class="uk-navbar-container" uk-navbar="dropbar: true" style="background-color: #243a51;color: #fff;box-shadow: inset -1px 6px 20px 5px rgba(0,0,0,.16), 1px 8px 17px 0px #d2d2d2;">
+            <div class="uk-navbar-left">
+
+            </div>
+            <div class="uk-navbar-right">
+                <a class="uk-navbar-toggle " uk-toggle="target: #offcanvas-nav-primary">
+                    <span uk-navbar-toggle-icon></span> <span class="uk-margin-small-left">Menu</span>
+                </a>
+            </div>
+        </nav>
+        <div class="uk-position-top">
+            @*<nav class="uk-navbar-container uk-navbar-transparent" uk-navbar>
+                    <div class="uk-navbar-right">
+
+                    </div>
+                </nav>*@
+
+        </div>
+
+    </div>
+    <div class="uk-container uk-container-small" style="padding-top:  50px;">
+        @RenderBody()
+
+    </div>
+    @*<nav class="uk-navbar uk-navbar-container uk-margin">
+
+        </nav>*@
+    <div class="uk-offcanvas-content">
+        <div id="offcanvas-nav-primary" uk-offcanvas="flip: true; overlay: true">
+            <div class="uk-offcanvas-bar uk-flex uk-flex-column" style="    background-image:url('/img/pal.png'); background-repeat:no-repeat; box-shadow: inset -1px 6px 20px 5px rgba(0,0,0,.16), -6px 20px 20px 0px #16212d;">
+                <button class="uk-offcanvas-close" type="button" uk-close></button>
+                <header><h1 style="text-align:center">choose</h1></header>
+                <hr />
+                <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li class="uk-parent">
+                        <a href="#">Parent</a>
+                        <ul class="uk-nav-sub">
+                            <li><a href="#" uk-toggle="target: #modal-overflow">ادخال فاتورة</a></li>
+                            <li><a href="/bills/index">قائمة الفواتير</a></li>
+                        </ul>
+                    </li>
+                    <li class="uk-nav-header">Header</li>
+                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: table"></span> Item</a></li>
+                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span> Item</a></li>
+                    <li class="uk-nav-divider"></li>
+                    <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: trash"></span> Item</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-overflow" uk-modal>
+
+        <div class="uk-modal-dialog">
+
+            <button class="uk-modal-close-default" type="button" uk-close></button>
+
+            <div class="uk-modal-header">
+                <h2 class="uk-modal-title">ادخال مشتريات</h2>
+            </div>
+            <div class="uk-modal-body" uk-overflow-auto>
+                <form>
+                    <fieldset class="uk-fieldset">
+
+                        <legend class="uk-legend">ادخال فاتورة</legend>
+
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder="جهة الشراء">
+                        </div>
+                        <div class="uk-margin">
+                            <input class="uk-input" type="text" placeholder="رقم الفاتورة">
+                        </div>
+                        <div class="uk-margin">
+                            <select class="uk-select">
+                                <option>دولار</option>
+                                <option>شيقل</option>
+                            </select>
+                        </div>
+
+                        <div class="uk-margin">
+                            <textarea class="uk-textarea" rows="5" placeholder="وصف الفاتورة"></textarea>
+                        </div>
+
+                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                            <label><input class="uk-radio" type="radio" name="radio2" checked> A</label>
+                            <label><input class="uk-radio" type="radio" name="radio2"> B</label>
+                        </div>
+
+                        <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+                            <label><input class="uk-checkbox" type="checkbox" checked> A</label>
+                            <label><input class="uk-checkbox" type="checkbox"> B</label>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+                <button class="uk-button uk-button-primary" type="button">Save</button>
+            </div>
+
+        </div>
+    </div>
+    @RenderSection("script",required:false)
+    <script>
+        UIkit.util.on("", "", function (e) {
+            e.preventDefault();
+            e.target.blur();
+
+        })
+    </script>
+</body>
+</html>

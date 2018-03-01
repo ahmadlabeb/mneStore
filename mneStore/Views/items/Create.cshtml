@@ -46,7 +46,13 @@
                 @Html.ValidationMessageFor(model => model.serialNamber, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="uk-margin">
+            @Html.LabelFor(model=>model.KindsId, new  {@class="uk-form-label" })
+            <div class="uk-form-controls">
+                @Html.DropDownList("KindsId", null,new { @class= "uk-select" })
+                @Html.ValidationMessageFor(model=>model.KindsId, "",new { @class="text-danger"})
+            </div>
+        </div>
         <div class="uk-margin">
             @Html.LabelFor(model => model.barcode, htmlAttributes: new { @class = "uk-form-label" })
             <div class="uk-form-controls">

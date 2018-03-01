@@ -14,6 +14,6 @@ namespace mneStore.Models
         [DisplayName("نوع لعنصر")]
         public string nameKind { get; set; }
 
-        public ICollection<items> item { get; set; }
+        public virtual ICollection<items> item { get; set; }
     }
 }

@@ -3,7 +3,7 @@ namespace mneStore.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class updateDatabase : DbMigration
+    public partial class updateData : DbMigration
     {
         public override void Up()
         {
@@ -41,13 +41,13 @@ namespace mneStore.Migrations
                         serialNamber = c.String(nullable: false),
                         barcode = c.String(nullable: false),
                         billsId = c.Int(nullable: false),
-                        Kind_Id = c.Int(nullable: false)
+                        KindsId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.id)
-                .ForeignKey("dbo.bills", t => t.Kind_Id, cascadeDelete: true)
-                .ForeignKey("dbo.Kinds", t => t.Kind_Id)
+                .ForeignKey("dbo.bills", t => t.billsId, cascadeDelete: true)
+                .ForeignKey("dbo.Kinds", t => t.KindsId, cascadeDelete: true)
                 .Index(t => t.billsId)
-                .Index(t => t.Kind_Id);
+                .Index(t => t.KindsId);
             
             CreateTable(
                 "dbo.Kinds",
@@ -62,10 +62,10 @@ namespace mneStore.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.items", "Kind_Id", "dbo.Kinds");
+            DropForeignKey("dbo.items", "KindsId", "dbo.Kinds");
             DropForeignKey("dbo.items", "billsId", "dbo.bills");
             DropForeignKey("dbo.bills", "currunciesId", "dbo.Curruncies");
-            DropIndex("dbo.items", new[] { "Kind_Id" });
+            DropIndex("dbo.items", new[] { "KindsId" });
             DropIndex("dbo.items", new[] { "billsId" });
             DropIndex("dbo.bills", new[] { "currunciesId" });
             DropTable("dbo.Kinds");

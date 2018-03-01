@@ -4,10 +4,6 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@{
-    var couter = Model.items.Count;
-
-}
 
 <h3>تفاصيل الفاتوورة</h3>
 <hr class="uk-divider-icon">
@@ -44,13 +40,13 @@
     <table class="uk-table uk-table-hover uk-table-divider uk-table-justify table-shadow ">
         <thead>
             <tr>
-                <th></th>
                 <th>اسم العنصر</th>
                 <th>وصف العنصر</th>
                 <th>brand</th>
                 <th>رقم التسلسلي</th>
                 <th>قارئ الباركود</th>
                 <th>تاريخ الادخال</th>
+                <th>نوع العنصر</th>
                 <th></th>
             </tr>
         </thead>
@@ -65,6 +61,7 @@
                     <td>@Html.DisplayFor(model => itemBills.serialNamber)</td>
                     <td>@Html.DisplayFor(model => itemBills.barcode)</td>
                     <td>@Html.DisplayFor(model => itemBills.bills.dateBill)</td>
+                    <td>@Html.DisplayFor(model => itemBills.kinds.nameKind)</td>
                     <td>
                         <a href="~/items/Edit?id=@itemBills.id" uk-tooltip="تعديل عنصر الفاتورة" uk-icon="file-edit"></a>|
                         <a href="~/items/Delete?id=@itemBills.id" uk-tooltip="title:حذف عنصر الفاتورة  ; pos: bottom-right" uk-icon="trash"></a>

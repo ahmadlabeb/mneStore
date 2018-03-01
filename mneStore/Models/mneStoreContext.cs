@@ -23,6 +23,7 @@ namespace mneStore.Models
 
         public System.Data.Entity.DbSet<mneStore.Models.items> items { get; set; }
         public System.Data.Entity.DbSet<mneStore.Models.Curruncies> curruncies { get; set; }
+        public System.Data.Entity.DbSet<mneStore.Models.Kinds> kinds { get; set; }
 
     }
 }

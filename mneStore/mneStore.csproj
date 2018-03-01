@@ -163,12 +163,13 @@
     <Compile Include="Controllers\CurrunciesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\itemsController.cs" />
+    <Compile Include="Controllers\KindsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802281004030_updateDatabase.cs" />
-    <Compile Include="Migrations\201802281004030_updateDatabase.Designer.cs">
-      <DependentUpon>201802281004030_updateDatabase.cs</DependentUpon>
+    <Compile Include="Migrations\201803010901420_updateData.cs" />
+    <Compile Include="Migrations\201803010901420_updateData.Designer.cs">
+      <DependentUpon>201803010901420_updateData.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\bills.cs" />
@@ -193,6 +194,11 @@
     <Content Include="Views\Curruncies\Details.cshtml" />
     <Content Include="Views\Curruncies\Edit.cshtml" />
     <Content Include="Views\Curruncies\Index.cshtml" />
+    <Content Include="Views\Kinds\Create.cshtml" />
+    <Content Include="Views\Kinds\Delete.cshtml" />
+    <Content Include="Views\Kinds\Details.cshtml" />
+    <Content Include="Views\Kinds\Edit.cshtml" />
+    <Content Include="Views\Kinds\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -201,8 +207,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802281004030_updateDatabase.resx">
-      <DependentUpon>201802281004030_updateDatabase.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803010901420_updateData.resx">
+      <DependentUpon>201803010901420_updateData.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

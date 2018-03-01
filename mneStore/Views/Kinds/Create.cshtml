@@ -1,0 +1,36 @@
+﻿@model mneStore.Models.Kinds
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="uk-form-horizontal uk-margin-large">
+        <h4>Kinds</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "uk-text-danger" })
+        <div class="uk-margin">
+            @Html.LabelFor(model => model.nameKind, htmlAttributes: new { @class = "uk-form-label" })
+            <div class="uk-form-controls">
+                @Html.EditorFor(model => model.nameKind, new { htmlAttributes = new { @class = "uk-input" } })
+                @Html.ValidationMessageFor(model => model.nameKind, "", new { @class = "uk-text-danger" })
+            </div>
+        </div>
+
+        <div class="uk-margin">
+            <div class="uk-form-controls">
+                <input type="submit" value="Create" class="uk-button uk-alert-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

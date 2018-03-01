@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -27,9 +28,10 @@ namespace mneStore.Models
         public string barcode { get; set; }
         public int billsId { get; set; }
         [DisplayName("نوع العنصر")]
-        public int Kind_Id { get; set; }
+        public int KindsId { get; set; }
 
         public virtual bills bills { get; set; }
-        public Kinds kinds { get; set; }
+        [ForeignKey("KindsId")]
+        public virtual Kinds kinds { get; set; }
     }
 }

@@ -26,6 +26,7 @@ namespace mneStore.Models
         [DisplayName("قارئ الباركود")]
         public string barcode { get; set; }
         public int billsId { get; set; }
+        [DisplayName("نوع العنصر")]
         public int Kind_Id { get; set; }
 
         public virtual bills bills { get; set; }

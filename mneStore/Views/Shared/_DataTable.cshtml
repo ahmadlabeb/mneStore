@@ -1,0 +1,79 @@
+﻿@model IEnumerable<mneStore.Models.bills>
+
+@{
+    ViewBag.Title = "GetData";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>GetData</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="display" id="Indexdata">
+    <thead>
+        <tr>
+            <th>
+                nameUnit
+            </th>
+            <th>
+                nameBuy
+            </th>
+            <th>
+                billNumber
+            </th>
+            <th>
+                dateBill
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @*@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.curruncies.nameUnit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nameBuy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.billNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateBill)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                </td>
+            </tr>
+        }*@
+
+</table>
+@section scripts{
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function () {
+            $('#Indexdata').DataTable({
+                "ajax": {
+                    url: "/bills/GetData",
+                    type: "GET",
+                    dataType: "json"
+                },
+                "columns": [
+                    { "data": "nameUnit" },
+                    { "data": "nameBuy" },
+                    { "data": "billNumber" },
+                    { "data": "dateBill" }
+
+                ]
+
+            });
+
+        });
+    </script>
+}

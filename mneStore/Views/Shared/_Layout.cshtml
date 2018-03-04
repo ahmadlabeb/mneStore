@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <link href="~/Content/uikit.min.css" rel="stylesheet" />
     <script src="~/Scripts/uikit.min.js"></script>
     <script src="~/Scripts/uikit-icons.min.js"></script>
@@ -34,7 +35,6 @@
     </div>
     <div class="uk-container uk-container-small" style="padding-top:  50px;">
         @RenderBody()
-
     </div>
     @*<nav class="uk-navbar uk-navbar-container uk-margin">
 
@@ -116,7 +116,8 @@
 
         </div>
     </div>
-    @RenderSection("script",required:false)
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    @RenderSection("scripts", required: false)
     <script>
         UIkit.util.on("", "", function (e) {
             e.preventDefault();

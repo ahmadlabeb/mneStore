@@ -1,19 +1,21 @@
 ﻿@model IEnumerable<mneStore.Models.bills>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "GetData";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>الصفحة الرئيسية للفواتير</h2>
-<hr class="uk-divider-icon">
+<h2>GetData</h2>
 
 <p>
-    @Html.ActionLink("ادخال فاتورة", "Create",null,htmlAttributes:new { @class= "uk-button uk-button-primary" })
+    @Html.ActionLink("Create New", "Create")
 </p>
-<table class="uk-table uk-table-hover uk-table-divider uk-table-striped  table-shadow">
+<table class="display" id="Indexdata">
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.curruncies.nameUnit)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.nameBuy)
             </th>
@@ -26,10 +28,11 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    @*@foreach (var item in Model) {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.curruncies.nameUnit)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.nameBuy)
                 </td>
@@ -40,11 +43,37 @@
                     @Html.DisplayFor(modelItem => item.dateBill)
                 </td>
                 <td>
-                    <a href="~/bills/Edit?id=@item.id" uk-icon="icon: file-edit"  uk-tooltip="title: تعديل; pos: right"></a>|
-                    <a href="~/bills/Details?id=@item.id" uk-icon="icon: tag"  uk-tooltip="title: تفاصيل الفاتورة; pos: top"></a>|
-                    <a href="~/bills/Delete?id=@item.id" uk-icon="icon: trash"  uk-tooltip="title: حذف فاتورة; pos: left"></a>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
                 </td>
             </tr>
-        }
-    </tbody>
+        }*@
+
 </table>
+@section scripts{
+    <script src="~/Scripts/jquery-1.12.4.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+
+    <script>
+        $(document).ready(function () {
+            $('#Indexdata').DataTable({
+                "ajax": {
+                    "url": "../bills/GetData",
+                    "type": "GET",
+                    "dataType": "json"
+                },
+                "columns": [
+                    { "data": "nameUnit" },
+                    { "data": "nameBuy" },
+                    { "data": "billNumber" },
+                    { "data": "dateBill" }
+
+                ]
+
+            });
+
+        });
+    </script>
+}

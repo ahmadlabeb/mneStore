@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using mneStore.Models;
+using Newtonsoft.Json;
 
 namespace mneStore.Controllers
 {
@@ -18,6 +19,9 @@ namespace mneStore.Controllers
         public ActionResult Index()
         {
             return View(db.bills.ToList());
+            //var listData = db.bills.ToList();
+            //List<bills> bill = db.bills.ToList<bills>();
+            //return Json(new { data = bill }, JsonRequestBehavior.AllowGet);
         }
 
         // GET: bills/Details/5
@@ -124,7 +128,14 @@ namespace mneStore.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+        public ActionResult GetData()
+        {
+            List<bills> list = db.bills.ToList<bills>();
+            var jsonlist = JsonConvert.SerializeObject(list, Formatting.None, new JsonSerializerSettings { ReferenceLoopHandling = ReferenceLoopHandling.Ignore });
 
+            return Json(new { data = jsonlist }, JsonRequestBehavior.AllowGet);
+            //return Content(jsonlist, "application/json");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

@@ -33,5 +33,6 @@ namespace mneStore.Models
         public virtual bills bills { get; set; }
         [ForeignKey("KindsId")]
         public virtual Kinds kinds { get; set; }
+        public virtual ICollection<DescriptionKinds> descriptionKinds { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace mneStore.Models
         public System.Data.Entity.DbSet<mneStore.Models.items> items { get; set; }
         public System.Data.Entity.DbSet<mneStore.Models.Curruncies> curruncies { get; set; }
         public System.Data.Entity.DbSet<mneStore.Models.Kinds> kinds { get; set; }
-
+        public IEnumerable<Kinds> Kinds { get;  set; }
+        public System.Data.Entity.DbSet<mneStore.Models.DescriptionKinds> DescriptionKinds { get; set; }
     }
 }

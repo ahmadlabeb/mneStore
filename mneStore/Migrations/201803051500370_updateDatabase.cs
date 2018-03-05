@@ -3,7 +3,7 @@ namespace mneStore.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class updateData : DbMigration
+    public partial class updateDatabase : DbMigration
     {
         public override void Up()
         {
@@ -50,6 +50,21 @@ namespace mneStore.Migrations
                 .Index(t => t.KindsId);
             
             CreateTable(
+                "dbo.DescriptionKinds",
+                c => new
+                    {
+                        id = c.Int(nullable: false, identity: true),
+                        description = c.String(nullable: false),
+                        KindsId = c.Int(nullable: false),
+                        itemsId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.id)
+                .ForeignKey("dbo.items", t => t.itemsId, cascadeDelete: true)
+                .ForeignKey("dbo.Kinds", t => t.KindsId, cascadeDelete: true)
+                .Index(t => t.KindsId)
+                .Index(t => t.itemsId);
+            
+            CreateTable(
                 "dbo.Kinds",
                 c => new
                     {
@@ -63,12 +78,17 @@ namespace mneStore.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.items", "KindsId", "dbo.Kinds");
+            DropForeignKey("dbo.DescriptionKinds", "KindsId", "dbo.Kinds");
+            DropForeignKey("dbo.DescriptionKinds", "itemsId", "dbo.items");
             DropForeignKey("dbo.items", "billsId", "dbo.bills");
             DropForeignKey("dbo.bills", "currunciesId", "dbo.Curruncies");
+            DropIndex("dbo.DescriptionKinds", new[] { "itemsId" });
+            DropIndex("dbo.DescriptionKinds", new[] { "KindsId" });
             DropIndex("dbo.items", new[] { "KindsId" });
             DropIndex("dbo.items", new[] { "billsId" });
             DropIndex("dbo.bills", new[] { "currunciesId" });
             DropTable("dbo.Kinds");
+            DropTable("dbo.DescriptionKinds");
             DropTable("dbo.items");
             DropTable("dbo.Curruncies");
             DropTable("dbo.bills");

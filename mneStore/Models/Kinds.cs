@@ -15,5 +15,6 @@ namespace mneStore.Models
         public string nameKind { get; set; }
 
         public virtual ICollection<items> item { get; set; }
+        public virtual ICollection<DescriptionKinds> descriptionkinds { get; set; }
     }
 }

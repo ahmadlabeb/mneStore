@@ -166,19 +166,21 @@
     <Compile Include="Controllers\bills1Controller.cs" />
     <Compile Include="Controllers\billsController.cs" />
     <Compile Include="Controllers\CurrunciesController.cs" />
+    <Compile Include="Controllers\DescriptionKindsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\itemsController.cs" />
     <Compile Include="Controllers\KindsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803010901420_updateData.cs" />
-    <Compile Include="Migrations\201803010901420_updateData.Designer.cs">
-      <DependentUpon>201803010901420_updateData.cs</DependentUpon>
+    <Compile Include="Migrations\201803051500370_updateDatabase.cs" />
+    <Compile Include="Migrations\201803051500370_updateDatabase.Designer.cs">
+      <DependentUpon>201803051500370_updateDatabase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\bills.cs" />
     <Compile Include="Models\Curruncies.cs" />
+    <Compile Include="Models\DescriptionKinds.cs" />
     <Compile Include="Models\items.cs" />
     <Compile Include="Models\Kinds.cs" />
     <Compile Include="Models\mneStoreContext.cs" />
@@ -206,6 +208,11 @@
     <Content Include="Views\Kinds\Index.cshtml" />
     <Content Include="Views\Shared\_DataTable.cshtml" />
     <Content Include="Views\Curruncies\CreateAddItem.cshtml" />
+    <Content Include="Views\DescriptionKinds\Create.cshtml" />
+    <Content Include="Views\DescriptionKinds\Delete.cshtml" />
+    <Content Include="Views\DescriptionKinds\Details.cshtml" />
+    <Content Include="Views\DescriptionKinds\Edit.cshtml" />
+    <Content Include="Views\DescriptionKinds\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -214,8 +221,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803010901420_updateData.resx">
-      <DependentUpon>201803010901420_updateData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803051500370_updateDatabase.resx">
+      <DependentUpon>201803051500370_updateDatabase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

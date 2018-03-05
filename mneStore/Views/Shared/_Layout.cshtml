@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    @*<script src="~/Scripts/jquery-3.3.1.min.js"></script>*@
     <link href="~/Content/uikit.min.css" rel="stylesheet" />
     <script src="~/Scripts/uikit.min.js"></script>
     <script src="~/Scripts/uikit-icons.min.js"></script>
     <link href="~/Content/style.css" rel="stylesheet" />
+   
 </head>
 <body>
     <div class="uk-position-relative">
@@ -117,7 +118,7 @@
         </div>
     </div>
     @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
-    @RenderSection("scripts", required: false)
+    @RenderSection("script", required: false)
     <script>
         UIkit.util.on("", "", function (e) {
             e.preventDefault();

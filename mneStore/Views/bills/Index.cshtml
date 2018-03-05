@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="display" id="Indexdata">
+<table class="uk-table table-shadow" id="Indexdata">
     <thead>
         <tr>
             <th>
@@ -28,7 +28,7 @@
             <th></th>
         </tr>
     </thead>
-    @*@foreach (var item in Model) {
+    @foreach (var item in Model) {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.curruncies.nameUnit)
@@ -48,10 +48,11 @@
                     @Html.ActionLink("Delete", "Delete", new { id=item.id })
                 </td>
             </tr>
-        }*@
+        }
 
 </table>
-@section scripts{
+
+@*@section scripts{
     <script src="~/Scripts/jquery-1.12.4.js"></script>
     <script src="~/Scripts/jquery.dataTables.min.js"></script>
     <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
@@ -76,4 +77,4 @@
 
         });
     </script>
-}
+}*@

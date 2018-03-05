@@ -114,6 +114,7 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jquery-ui.css" />
     <Content Include="Content\jquery.dataTables.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\style.css" />
@@ -134,6 +135,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\js\bootstrap.js" />
     <Content Include="Scripts\js\bootstrap.min.js" />
     <Content Include="Scripts\js\jquery-3.2.1.min.js" />
@@ -203,6 +205,7 @@
     <Content Include="Views\Kinds\Edit.cshtml" />
     <Content Include="Views\Kinds\Index.cshtml" />
     <Content Include="Views\Shared\_DataTable.cshtml" />
+    <Content Include="Views\Curruncies\CreateAddItem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

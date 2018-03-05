@@ -40,7 +40,21 @@ namespace mneStore.Controllers
         {
             return View();
         }
-
+        public ActionResult CreateAddItem()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult CreateAddItem(Curruncies curruncies)
+        {
+            if (ModelState.IsValid)
+            {
+                db.curruncies.Add(curruncies);
+                db.SaveChanges();
+                return RedirectToAction("Create","bills");
+            }
+            return PartialView(curruncies);
+        }
         // POST: Curruncies/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

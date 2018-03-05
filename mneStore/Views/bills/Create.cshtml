@@ -9,7 +9,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="uk-form-horizontal uk-margin-large">
+    <div class="uk-form-horizontal uk-margin-large" >
         <h4>فاتورة</h4>
         <hr class="uk-divider-icon">
         @Html.ValidationSummary(true, "", new { @class = "uk-text-danger" })
@@ -34,6 +34,7 @@
             <div class="uk-form-controls">
                 @Html.DropDownList("currunciesId", null, htmlAttributes: new { @class = "uk-select" })
                 @Html.ValidationMessageFor(model => model.currunciesId, "", new { @class = "uk-text-danger" })
+                <a href="#" id="dialog-modal" @*onclick="'@Url.Action("Create","Curruncies")'"*@ class="uk-button" style="background-color:#00ff90">show</a>
             </div>
         </div>
         <div class="uk-margin">
@@ -56,5 +57,67 @@
     </div>
 }
 
-<div>
+<div id="dialog" style="display:none;" >
+
 </div>
+@section script{
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script>
+        
+        //$(function () {
+
+        //});
+        $(function () {
+           
+            $("#dialog-modal").click(function () {
+                $("#dialog").dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    width: 500,
+                    height: 500,
+                    title: "curruncy",
+                    open: function (event, ui) {
+                        $(this).load('@Url.Action("CreateAddItem", "Curruncies")');
+                    },
+                    success: function (data) {
+                        $(data).each(function () {
+                            console.log("success");
+                        });
+                        $(this).dialog("close");
+
+                    },
+                    buttons: {
+                        "Close": function () {
+                            $(this).dialog("close");
+                        }
+                    }, error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                    //close: function () {
+                    //    pubop.dialog("destroy").remove();
+                    //}
+                });
+            });
+
+        });
+        //var pubop;
+        //function addCurruncy(url) {
+        //    var fromdiv = $('<div/>');
+        //    $.get(url).done(function (response) {
+        //        fromdiv.html(response);
+        //        pubop = fromdiv.dialog({
+        //            autoOpen: true,
+        //            resizable: false,
+        //            title: "add carruncy",
+        //            height: 500,
+        //            width: 700,
+        //            close: function () {
+        //                pubop.dialog("destroy").remove();
+        //            }
+        //        });
+        //    });
+        //}
+    </script>
+}

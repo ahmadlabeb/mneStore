@@ -3,7 +3,7 @@ namespace mneStore.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class updateData : DbMigration
+    public partial class updateDatabase : DbMigration
     {
         public override void Up()
         {

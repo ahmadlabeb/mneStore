@@ -169,12 +169,21 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\itemsController.cs" />
     <Compile Include="Controllers\KindsController.cs" />
+    <Compile Include="Controllers\UnitItemsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201803010901420_updateData.cs" />
-    <Compile Include="Migrations\201803010901420_updateData.Designer.cs">
-      <DependentUpon>201803010901420_updateData.cs</DependentUpon>
+    <Compile Include="Migrations\201803060740262_updateDatabase.cs" />
+    <Compile Include="Migrations\201803060740262_updateDatabase.Designer.cs">
+      <DependentUpon>201803060740262_updateDatabase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803061151512_tableUnits.cs" />
+    <Compile Include="Migrations\201803061151512_tableUnits.Designer.cs">
+      <DependentUpon>201803061151512_tableUnits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803061204433_updateItemsTabel.cs" />
+    <Compile Include="Migrations\201803061204433_updateItemsTabel.Designer.cs">
+      <DependentUpon>201803061204433_updateItemsTabel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\bills.cs" />
@@ -182,6 +191,7 @@
     <Compile Include="Models\items.cs" />
     <Compile Include="Models\Kinds.cs" />
     <Compile Include="Models\mneStoreContext.cs" />
+    <Compile Include="Models\UnitItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -206,6 +216,11 @@
     <Content Include="Views\Kinds\Index.cshtml" />
     <Content Include="Views\Shared\_DataTable.cshtml" />
     <Content Include="Views\Curruncies\CreateAddItem.cshtml" />
+    <Content Include="Views\UnitItems\Create.cshtml" />
+    <Content Include="Views\UnitItems\Delete.cshtml" />
+    <Content Include="Views\UnitItems\Details.cshtml" />
+    <Content Include="Views\UnitItems\Edit.cshtml" />
+    <Content Include="Views\UnitItems\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -214,8 +229,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803010901420_updateData.resx">
-      <DependentUpon>201803010901420_updateData.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803060740262_updateDatabase.resx">
+      <DependentUpon>201803060740262_updateDatabase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061151512_tableUnits.resx">
+      <DependentUpon>201803061151512_tableUnits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061204433_updateItemsTabel.resx">
+      <DependentUpon>201803061204433_updateItemsTabel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

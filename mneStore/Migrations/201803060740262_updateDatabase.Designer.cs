@@ -7,13 +7,13 @@ namespace mneStore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class updateData : IMigrationMetadata
+    public sealed partial class updateDatabase : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(updateData));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(updateDatabase));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803010901420_updateData"; }
+            get { return "201803060740262_updateDatabase"; }
         }
         
         string IMigrationMetadata.Source

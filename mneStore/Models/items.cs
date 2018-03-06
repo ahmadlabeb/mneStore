@@ -26,6 +26,16 @@ namespace mneStore.Models
         [Required]
         [DisplayName("قارئ الباركود")]
         public string barcode { get; set; }
+
+
+        [Required]
+        [DisplayName("الكمية رقماً")]
+        public double quantity { get; set; }
+        [Required]
+        [DisplayName("سعر الوحدة")]
+        public decimal price { get; set; }
+
+
         public int billsId { get; set; }
         [DisplayName("نوع العنصر")]
         public int KindsId { get; set; }
@@ -33,5 +43,10 @@ namespace mneStore.Models
         public virtual bills bills { get; set; }
         [ForeignKey("KindsId")]
         public virtual Kinds kinds { get; set; }
+        [Required]
+        [DisplayName("الوحدة")]
+        public int UnitItemsId { get; set; }
+        [ForeignKey("UnitItemsId")]
+        public virtual UnitItems unititems { get; set; }
     }
 }

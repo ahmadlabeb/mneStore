@@ -25,4 +25,5 @@ namespace mneStore.Models
 
         public virtual ICollection<items> items { get; set; }
     }
+    
 }

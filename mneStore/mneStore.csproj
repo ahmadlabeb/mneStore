@@ -124,9 +124,11 @@
     <Content Include="Content\uikit.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="img\light.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="img\logo2.png" />
+    <Content Include="img\ministry_ar.png" />
+    <Content Include="img\ministry_Eng.png" />
+    <Content Include="img\ministry_logo.png" />
     <Content Include="img\pal.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

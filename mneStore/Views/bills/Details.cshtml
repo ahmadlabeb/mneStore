@@ -7,37 +7,71 @@
 
 <h3>تفاصيل الفاتوورة</h3>
 <hr class="uk-divider-icon">
-
-<div>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.nameBuy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.nameBuy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.billNumber)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.billNumber)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.dateBill)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.dateBill)
-        </dd>
-
-    </dl>
+<div class="uk-grid-collapse uk-child-width-expand@s uk-text-center" uk-grid>
+    <div uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+        <div class="uk-padding">
+            <img src="~/img/ministry_ar.png" />
+        </div>
+        <hr class="hr-line" style="border-top: 3px double #8c8b8b;" />
+    </div>
+    <div uk-scrollspy="cls: uk-animation-slide-top; repeat: true">
+        <div class="uk-padding uk-light">
+            <img src="~/img/ministry_logo.png" class="Ministry-logo" />
+        </div>
+    </div>
+    <div uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+        <div class="uk-padding uk-light">
+            <img src="~/img/ministry_Eng.png" />
+        </div>
+        <hr style="border-top: 3px double #8c8b8b;" />
+    </div>
 </div>
-<div>
-    <table class="uk-table uk-table-hover uk-table-divider uk-table-justify table-shadow ">
+<div style="text-align:center">
+    <h2>
+        مستند ادخال اللوازم
+    </h2>
+</div>
+<div class="uk-grid-collapse uk-child-width-expand@s" uk-grid uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+    <div class="uk-padding">
+        <h4>استلمت من: <span style="border-bottom: 2px dotted #8c8b8b; font-size:12pt;">@Html.DisplayFor(model => model.nameBuy)</span></h4>
+    </div>
+    <div class="uk-padding">
+        <h4>بموجب: <span style="border-bottom: 2px dotted #8c8b8b; font-size:12pt;">@Html.DisplayFor(model => model.billNumber)</span></h4>
+    </div>
+    <div class="uk-padding">
+        <h4>تاريخ: <span style="border-bottom: 2px dotted #8c8b8b; font-size:12pt;">@Html.DisplayFor(model => model.dateBill)</span></h4>
+    </div>
+</div>
+@*<div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.nameBuy)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.nameBuy)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.billNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.billNumber)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dateBill)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dateBill)
+            </dd>
+
+        </dl>
+    </div>*@
+<div uk-grid uk-scrollspy="cls: uk-animation-fade; target: > table; delay: 500; repeat: true">
+    <table class="uk-table uk-table-hover uk-table-divider uk-table-justify uk-table-responsive table-shadow ">
         <thead>
             <tr>
                 <th>اسم العنصر</th>
@@ -76,8 +110,33 @@
     </table>
 </div>
 <p>
-    @Html.ActionLink("تعديل الفاتورة", "Edit", new { id = Model.id },new {@class= "uk-button uk-button-default" }) 
-    <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف">
+    @*@Html.ActionLink("تعديل الفاتورة", "Edit", new { id = Model.id },new {@class= "uk-button uk-button-default" })*@
+    <a href="~/bills/Edit/@Model.id" class="uk-button uk-button-default" uk-tooltip="تعديل مصدر الفاتورة" uk-scrollspy="cls: uk-animation-slide-left; repeat: false">تعديل الفاتورة</a>
+    <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف" uk-scrollspy="cls: uk-animation-slide-right; repeat: false">
         <span uk-icon="icon: reply"></span>
     </a>
 </p>
+<div uk-scrollspy="cls: uk-animation-fade; delay: 500; repeat: false">
+    <span style="text-align:left">استلمت اللوازم المذكور اعلاه حس الاصول</span>
+    <span style="text-align:right;margin-right:40%;">اسم المستلم/امين المستودع : <span style="border-bottom: 2px dotted #8c8b8b; font-size:12pt;">طارق زياد</span></span>
+</div>
+<div class="uk-grid-collapse uk-child-width-expand@s" uk-grid>
+
+    <div class="uk-padding" uk-scrollspy="cls: uk-animation-slide-right; repeat: false">
+        <h4 style="text-align:right">تاريخ: <span style="border-bottom: 2px dotted #8c8b8b; font-size:12pt;">@Html.DisplayFor(model => model.dateBill)</span></h4>
+    </div>
+    <div class="uk-padding" uk-scrollspy="cls: uk-animation-fade;  delay: 500; repeat: false">
+        <h4 style="text-align:center">الوزارة/الدائرة: <span style="border-bottom: 2px dotted #8c8b8b; font-size:12pt;">اللوازم والمشتريات</span></h4>
+    </div>
+    <div class="uk-padding" uk-scrollspy="cls: uk-animation-slide-left; repeat: false">
+        <h4 style="text-align:left">توقيعــه: <span style="border-bottom: 2px dotted #8c8b8b; font-size:12pt;">زياد</span></h4>
+    </div>
+</div>
+<div uk-scrollspy="cls: uk-animation-slide-bottom; repeat: false">
+    <h5><span style="border-bottom: 2px solid #8c8b8b; font-size:12pt;">نسخة الى</span></h5>
+    <ul>
+        <li><span>وزارة المالية/دائرة اللوازم</span></li>
+        <li><span>الدائرة المالية</span></li>
+    </ul>
+</div>
+<hr style="border-bottom: 2px solid black" />

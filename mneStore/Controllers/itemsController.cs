@@ -83,13 +83,11 @@ namespace mneStore.Controllers
                 db.items.Add(items);
                 items.billsId= (int)Session["idBill"];
                 db.SaveChanges();
-                return RedirectToAction("items", "Create");
+                return RedirectToAction("Create","items");
             }
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind",items.KindsId);
             ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit", items.UnitItemsId);
             ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand",items.brandId);
-
-
             return View(items);
         }
 

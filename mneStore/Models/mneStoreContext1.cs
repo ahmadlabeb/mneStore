@@ -6,7 +6,7 @@ using System.Web;
 
 namespace mneStore.Models
 {
-    public class mneStoreContext : DbContext
+    public class mneStoreContext1 : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -15,7 +15,7 @@ namespace mneStore.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public mneStoreContext() : base("name=mneStoreContext")
+        public mneStoreContext1() : base("name=mneStoreContext")
         {
         }
 

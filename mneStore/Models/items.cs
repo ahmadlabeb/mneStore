@@ -17,13 +17,11 @@ namespace mneStore.Models
         [Required]
         [DisplayName("وصف العنصر")]
         public string description { get; set; }
-        [Required]
-        [DisplayName("brand")]
-        public string brand { get; set; }
-        [Required]
+        //[Required]
+        //[DisplayName("الماركة")]
+        //public string brand { get; set; }
         [DisplayName("الرقم التسلسلي")]
         public string serialNamber { get; set; }
-        [Required]
         [DisplayName("قارئ الباركود")]
         public string barcode { get; set; }
 
@@ -39,14 +37,22 @@ namespace mneStore.Models
         public int billsId { get; set; }
         [DisplayName("نوع العنصر")]
         public int KindsId { get; set; }
-
         public virtual bills bills { get; set; }
         [ForeignKey("KindsId")]
         public virtual Kinds kinds { get; set; }
+
         [Required]
         [DisplayName("الوحدة")]
         public int UnitItemsId { get; set; }
+
+
         [ForeignKey("UnitItemsId")]
         public virtual UnitItems unititems { get; set; }
+        [Required]
+        [DisplayName("الماركة")]
+        public int brandId { get; set; }
+        [ForeignKey("brandId")]
+        public virtual brand brands { get; set; }
+
     }
 }

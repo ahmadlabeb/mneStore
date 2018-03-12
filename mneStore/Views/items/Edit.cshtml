@@ -10,9 +10,9 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="uk-form-horizontal uk-margin-large">
-    <h4>items</h4>
+    <h4>المخزن</h4>
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "uk-text-danger" })
     @Html.HiddenFor(model => model.id)
@@ -34,12 +34,12 @@
     </div>
 
     <div class="uk-margin">
-        @Html.LabelFor(model => model.brand, htmlAttributes: new { @class = "uk-form-label" })
+        @Html.LabelFor(model => model.brandId, new { @class = "uk-form-label" })
         <div class="uk-form-controls">
-            @Html.EditorFor(model => model.brand, new { htmlAttributes = new { @class = "uk-input" } })
-            @Html.ValidationMessageFor(model => model.brand, "", new { @class = "uk-text-danger" })
+            @Html.DropDownList("brandId", null, new { @class = "uk-select" })
+            @Html.ValidationMessageFor(model => model.brandId, "", new { @class = "text-danger" })
         </div>
-    </div>
+    </div>>
 
     <div class="uk-margin">
         @Html.LabelFor(model => model.serialNamber, htmlAttributes: new { @class = "uk-form-label" })
@@ -49,10 +49,31 @@
         </div>
     </div>
     <div class="uk-margin">
+        @Html.LabelFor(model => model.quantity, htmlAttributes: new { @class = "uk-form-label" })
+        <div class="uk-form-controls">
+            @Html.EditorFor(model => model.quantity, new { htmlAttributes = new { @class = "uk-input" } })
+            @Html.ValidationMessageFor(model => model.quantity, "", new { @class = "uk-text-danger" })
+        </div>
+    </div>
+    <div class="uk-margin">
+        @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "uk-form-label" })
+        <div class="uk-form-controls">
+            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "uk-input" } })
+            @Html.ValidationMessageFor(model => model.price, "", new { @class = "uk-text-danger" })
+        </div>
+    </div>
+    <div class="uk-margin">
         @Html.LabelFor(model => model.KindsId, new { @class = "uk-form-label" })
         <div class="uk-form-controls">
-            @Html.DropDownList("KindsId", null, new { @class = "uk-input" })
-            @Html.ValidationMessageFor(model => model.KindsId, "", new { @class = "text-danger" })
+            @Html.DropDownList("KindsId", null, new { @class = "uk-select" })
+            @Html.ValidationMessageFor(model => model.KindsId, "", new { @class = "uk-text-danger" })
+        </div>
+    </div>
+    <div class="uk-margin">
+        @Html.LabelFor(model => model.UnitItemsId, new { @class = "uk-form-label" })
+        <div class="uk-form-controls">
+            @Html.DropDownList("UnitItemsId", null, new { @class = "uk-select" })
+            @Html.ValidationMessageFor(model => model.UnitItemsId, "", new { @class = "uk-text-danger" })
         </div>
     </div>
     <div class="uk-margin">

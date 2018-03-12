@@ -76,11 +76,13 @@
             <tr>
                 <th>اسم العنصر</th>
                 <th>وصف العنصر</th>
-                <th>brand</th>
-                <th>رقم التسلسلي</th>
-                <th>قارئ الباركود</th>
-                <th>تاريخ الادخال</th>
+                <th>الماركة</th>
+                <th>الوحدة</th>
+                <th>الكمية</th>
+                <th>سعر الوحدة</th>
                 <th>نوع العنصر</th>
+                <th>تاريخ الادخال</th>
+                <th>رقم التسلسلي</th>
                 <th></th>
             </tr>
         </thead>
@@ -88,21 +90,24 @@
             @foreach (var itemBills in Model.items)
             {
 
-                <tr>
-                    <td>@Html.DisplayFor(model => itemBills.nameItem)</td>
-                    <td>@Html.DisplayFor(model => itemBills.description)</td>
-                    <td>@Html.DisplayFor(model => itemBills.brand)</td>
-                    <td>@Html.DisplayFor(model => itemBills.serialNamber)</td>
-                    <td>@Html.DisplayFor(model => itemBills.barcode)</td>
-                    <td>@Html.DisplayFor(model => itemBills.bills.dateBill)</td>
-                    <td>@Html.DisplayFor(model => itemBills.kinds.nameKind)</td>
-                    <td>
-                        <a href="~/items/Edit?id=@itemBills.id" uk-tooltip="تعديل عنصر الفاتورة" uk-icon="file-edit"></a>|
-                        <a href="~/items/Delete?id=@itemBills.id" uk-tooltip="title:حذف عنصر الفاتورة  ; pos: bottom-right" uk-icon="trash"></a>
-                        @*@Html.ActionLink("Edit", "Edit", new { id = itemBills.id },htmlAttributes:new { }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = itemBills.id })*@
-                    </td>
-                </tr>
+            <tr>
+                <td>@Html.DisplayFor(model => itemBills.nameItem)</td>
+                <td>@Html.DisplayFor(model => itemBills.description)</td>
+                <td>@Html.DisplayFor(model => itemBills.brands.nameBrand)</td>
+                <td>@Html.DisplayFor(model => itemBills.unititems.NameUnit)</td>
+                <td>@Html.DisplayFor(model => itemBills.quantity)</td>
+                <td>@Html.DisplayFor(model => itemBills.price)</td>
+                <td>@Html.DisplayFor(model => itemBills.kinds.nameKind)</td>
+                <td>@Html.DisplayFor(model => itemBills.bills.dateBill)</td>
+                <td>@Html.DisplayFor(model => itemBills.serialNamber)</td>
+
+                <td>
+                    <a href="~/items/Edit?id=@itemBills.id" uk-tooltip="تعديل عنصر الفاتورة" uk-icon="file-edit"></a>|
+                    <a href="~/items/Delete?id=@itemBills.id" uk-tooltip="title:حذف عنصر الفاتورة  ; pos: bottom-right" uk-icon="trash"></a>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = itemBills.id },htmlAttributes:new { }) |
+            @Html.ActionLink("Delete", "Delete", new { id = itemBills.id })*@
+                </td>
+            </tr>
 
             }
 

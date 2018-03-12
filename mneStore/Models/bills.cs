@@ -11,7 +11,7 @@ namespace mneStore.Models
     {
         public int id { get; set; }
         [Required]
-        [DisplayName("جهة الشراء")]
+        [DisplayName("المورد/شركة")]
         public string nameBuy { get; set; }
         [Required]
         [DisplayName("رقم الفاتورة")]

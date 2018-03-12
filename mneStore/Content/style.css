@@ -1,5 +1,6 @@
 ﻿body {
-    direction:rtl;
+    direction: rtl;
+    padding-top: 50px;
 }
 .table-shadow {
     background-repeat: no-repeat;
@@ -28,8 +29,17 @@
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 .Ministry-logo {
-    height: 55px;
+    height: 150px;
+
 }
 .hr-line {
     border-top: 3px double #8c8b8b;
 }
+
+.input-type{
+    border: 1px solid #28a745;
+    height: 35px;
+    border-radius: 5px;
+    width: 300px;
+}
+

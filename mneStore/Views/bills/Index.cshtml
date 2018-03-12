@@ -5,76 +5,84 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>GetData</h2>
+<h2>قائمة الفواتير</h2>
+<hr class="uk-divider-icon">
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("انشاء فاتورة", "Create", "bills", new { @class = "uk-button uk-button-primary" })
 </p>
-<table class="uk-table table-shadow" id="Indexdata">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.curruncies.nameUnit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.nameBuy)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.billNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.dateBill)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    @foreach (var item in Model) {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.curruncies.nameUnit)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nameBuy)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.billNumber)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.dateBill)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
-                </td>
-            </tr>
-        }
 
-</table>
 
-@*@section scripts{
-    <script src="~/Scripts/jquery-1.12.4.js"></script>
-    <script src="~/Scripts/jquery.dataTables.min.js"></script>
-    <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
+        <table class="uk-table uk-table-hover uk-table-divider uk-table-justify table-shadow" id="Indexdata">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.curruncies.nameUnit)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nameBuy)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.billNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.dateBill)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.curruncies.nameUnit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nameBuy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.billNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.dateBill)
+                    </td>
+                    <td>
+                        <a href="~/bills/Edit?id=@item.id" uk-tooltip="تعديل الفاتورة" uk-icon="file-edit"></a>|
+                        <a href="~/bills/Details?id=@item.id" uk-tooltip="title:معلومات الفاتورة  ; pos: bottom-right" uk-icon="info"></a>|
+                        <a href="~/bills/Delete?id=@item.id" uk-tooltip="title:حذف الفاتورة  ; pos: bottom-right" uk-icon="trash"></a>
 
-    <script>
-        $(document).ready(function () {
-            $('#Indexdata').DataTable({
-                "ajax": {
-                    "url": "../bills/GetData",
-                    "type": "GET",
-                    "dataType": "json"
-                },
-                "columns": [
-                    { "data": "nameUnit" },
-                    { "data": "nameBuy" },
-                    { "data": "billNumber" },
-                    { "data": "dateBill" }
+                        @*@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+        @Html.ActionLink("Details", "Details", new { id = item.id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+                    </td>
+                </tr>
+            }
 
-                ]
+        </table>
 
-            });
+        @*@section scripts{
+                <script src="~/Scripts/jquery-1.12.4.js"></script>
+                <script src="~/Scripts/jquery.dataTables.min.js"></script>
+                <link href="~/Content/jquery.dataTables.min.css" rel="stylesheet" />
 
-        });
-    </script>
-}*@
+                <script>
+                    $(document).ready(function () {
+                        $('#Indexdata').DataTable({
+                            "ajax": {
+                                "url": "../bills/GetData",
+                                "type": "GET",
+                                "dataType": "json"
+                            },
+                            "columns": [
+                                { "data": "nameUnit" },
+                                { "data": "nameBuy" },
+                                { "data": "billNumber" },
+                                { "data": "dateBill" }
+
+                            ]
+
+                        });
+
+                    });
+                </script>
+            }*@

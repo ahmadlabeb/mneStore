@@ -15,10 +15,36 @@ namespace mneStore.Controllers
         private mneStoreContext db = new mneStoreContext();
 
         // GET: items
-        public ActionResult Index()
+        public ActionResult Index(string index, string searchString)
         {
-            var items = db.items.Include(i => i.bills);
-            return View(items.ToList());
+          
+                ViewBag.NameSortParm = String.IsNullOrEmpty(index) ? "nameItem" : "";
+                ViewBag.DateSortParm = index == "description" ? "barcode" : "description";
+                var iteme = from s in db.items
+                               select s;
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    iteme = iteme.Where(s => s.nameItem.Contains(searchString)
+                                           || s.barcode.Contains(searchString));
+                }
+                switch (index)
+                {
+                    case "nameItem":
+                        iteme = iteme.OrderByDescending(s => s.nameItem);
+                        break;
+                    case "description":
+                        iteme = iteme.OrderByDescending(s => s.description);
+                        break;
+                    case "barcode":
+                        iteme = iteme.OrderByDescending(s => s.barcode);
+                        break;
+                    default:
+                        iteme = iteme.OrderBy(s => s.nameItem);
+                        break;
+                }
+            
+            //var items = db.items.Include(i => i.bills);
+            return View(iteme.ToList());
         }
 
         // GET: items/Details/5
@@ -40,6 +66,8 @@ namespace mneStore.Controllers
         public ActionResult Create()
         {
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind");
+            ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit");
+            ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand");
             return View();
         }
 
@@ -53,11 +81,14 @@ namespace mneStore.Controllers
             if (ModelState.IsValid)
             {
                 db.items.Add(items);
-                items.billsId = (int)Session["idBill"];
+                items.billsId= (int)Session["idBill"];
                 db.SaveChanges();
-                return RedirectToAction("Index","bills");
+                return RedirectToAction("items", "Create");
             }
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind",items.KindsId);
+            ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit", items.UnitItemsId);
+            ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand",items.brandId);
+
 
             return View(items);
         }
@@ -75,6 +106,9 @@ namespace mneStore.Controllers
                 return HttpNotFound();
             }
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind", items.KindsId);
+            ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit", items.UnitItemsId);
+            ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand", items.brandId);
+
 
             return View(items);
         }
@@ -84,7 +118,7 @@ namespace mneStore.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(items items)
+        public ActionResult Edit( items items)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +127,10 @@ namespace mneStore.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind", items.KindsId);
+            ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit", items.UnitItemsId);
+            ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand", items.brandId);
+
+
             return View(items);
         }
 

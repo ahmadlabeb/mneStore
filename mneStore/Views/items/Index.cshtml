@@ -5,12 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>قائمة العناصر الموجودة بالمخزن</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create",null, new { @class = "uk-button uk-button-primary" })
 </p>
-<table class="uk-table uk-table-hover uk-table-divider uk-table-justify">
+
+@using (Html.BeginForm())
+{
+    <p>
+        بحث عن عنصر: @Html.TextBox("SearchString",null,new { @class = "input-type" })  
+        <input type="submit" value="Search" class="uk-button uk-button-default"/></p>
+}
+<table class="uk-table uk-table-hover uk-table-divider uk-table-justify table-shadow">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.nameItem)
@@ -19,7 +26,7 @@
             @Html.DisplayNameFor(model => model.description)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.brand)
+            @Html.DisplayNameFor(model => model.brands.nameBrand)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.serialNamber)
@@ -27,34 +34,38 @@
         <th>
             @Html.DisplayNameFor(model => model.barcode)
         </th>
-       
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nameItem)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.brand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.serialNamber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.barcode)
-        </td>
-      
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nameItem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.brands.nameBrand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serialNamber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.barcode)
+            </td>
+
+            <td>
+                <a href="~/items/Edit?id=@item.id" uk-tooltip="تعديل العنصر" uk-icon="file-edit"></a>|
+                <a href="~/items/Details?id=@item.id" uk-tooltip="title:معلومات العنصر  ; pos: bottom-right" uk-icon="info"></a>|
+                <a href="~/items/Delete?id=@item.id" uk-tooltip="title:حذف العنصر  ; pos: bottom-right" uk-icon="trash"></a>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+            </td>
+        </tr>
+    }
 
 </table>

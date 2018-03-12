@@ -26,5 +26,7 @@ namespace mneStore.Models
         public System.Data.Entity.DbSet<mneStore.Models.Kinds> kinds { get; set; }
 
         public System.Data.Entity.DbSet<mneStore.Models.UnitItems> UnitItems { get; set; }
+
+        public System.Data.Entity.DbSet<mneStore.Models.brand> brands { get; set; }
     }
 }

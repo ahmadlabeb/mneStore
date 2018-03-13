@@ -40,7 +40,7 @@
         <div class="uk-margin">
             @Html.LabelFor(model => model.dateBill, htmlAttributes: new { @class = "uk-form-label" })
             <div class="uk-form-controls">
-                @Html.EditorFor(model => model.dateBill, new { htmlAttributes = new { @class = "uk-input" } })
+                @Html.EditorFor(model => model.dateBill, new { htmlAttributes = new { @class = "uk-input" ,@id="datePiker"} })
                 @Html.ValidationMessageFor(model => model.dateBill, "", new { @class = "uk-text-danger" })
             </div>
         </div>
@@ -99,6 +99,10 @@
                     //    pubop.dialog("destroy").remove();
                     //}
                 });
+            });
+          
+            $("#datePiker").datepicker({
+                dateFormat: 'dd/mm/yy' 
             });
 
         });

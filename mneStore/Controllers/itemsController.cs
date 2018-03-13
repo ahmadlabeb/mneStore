@@ -106,8 +106,6 @@ namespace mneStore.Controllers
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind", items.KindsId);
             ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit", items.UnitItemsId);
             ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand", items.brandId);
-
-
             return View(items);
         }
 
@@ -127,8 +125,6 @@ namespace mneStore.Controllers
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind", items.KindsId);
             ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit", items.UnitItemsId);
             ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand", items.brandId);
-
-
             return View(items);
         }
 

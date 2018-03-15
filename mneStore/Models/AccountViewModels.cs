@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace mneStore.Models
@@ -48,36 +49,52 @@ namespace mneStore.Models
 
     public class LoginViewModel
     {
+        //[Required]
+        //[Display(Name = "اسم المستخدم")]
+        //[EmailAddress]
+        //public string Email { get; set; }
         [Required]
-        [Display(Name = "Email")]
-        [EmailAddress]
-        public string Email { get; set; }
-
+        [DisplayName("الرقم الوظيفي")]
+        [StringLength(6, ErrorMessage = "الرقم الوظيفي ستة ارقام", MinimumLength = 6)]
+        [MaxLength(6, ErrorMessage = "الرقم الوظيفي ستة ارقام")]
+        public string EmployeeNumber { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "تذكير بكلمة المرور?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterViewModel
     {
         [Required]
+        [DisplayName("اسم المستخدم")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DisplayName("الرقم الوظيفي")]
+        [StringLength(6,ErrorMessage = "الرقم الوظيفي ستة ارقام", MinimumLength =6)]
+        [MaxLength(6,ErrorMessage ="الرقم الوظيفي ستة ارقام")]
+        public string EmployeeNumber { get; set; }
+        [Required]
+        [DisplayName("نوع الحساب")]
+        public string UserType { get; set; }
+        [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "البريد الالكتروني")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "يجب ان يكون الطول {0}على الاقل {2}حرفا", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "كلمة المرور")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "تأكيد كلمة السر")]
+        [Compare("Password", ErrorMessage = "تاكد من كلمة المرور كلمة المرور غير متطابقة.")]
         public string ConfirmPassword { get; set; }
     }
 

@@ -58,7 +58,7 @@
 }
 
 <div id="dialog" style="display:none;" >
-
+   
 </div>
 @section script{
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
@@ -77,7 +77,7 @@
                     resizable: false,
                     width: 500,
                     height: 500,
-                    title: "curruncy",
+                    title: "العلملة",
                     open: function (event, ui) {
                         $(this).load('@Url.Action("CreateAddItem", "Curruncies")');
                     },

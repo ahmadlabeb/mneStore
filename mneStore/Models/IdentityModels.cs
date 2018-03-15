@@ -9,6 +9,8 @@ namespace mneStore.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationEmployeeUser : IdentityUser
     {
+        public string UserType { get; set; }
+        public string EmployeeNumber { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationEmployeeUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
@@ -38,5 +40,7 @@ namespace mneStore.Models
         public System.Data.Entity.DbSet<mneStore.Models.UnitItems> UnitItems { get; set; }
 
         public System.Data.Entity.DbSet<mneStore.Models.brand> brands { get; set; }
+
+        public System.Data.Entity.DbSet<mneStore.Models.RoleViewModel> RoleViewModels { get; set; }
     }
 }

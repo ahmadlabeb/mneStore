@@ -1,6 +1,6 @@
 ﻿body {
     direction: rtl;
-    padding-top: 50px;
+    padding-top: 200px;
 }
 .table-shadow {
     background-repeat: no-repeat;
@@ -41,5 +41,27 @@
     height: 35px;
     border-radius: 5px;
     width: 300px;
+    position:absolute;
 }
 
+.loginstyle {
+    /*border: 2px solid #ff6a00;*/
+    height: 400px;
+    padding-top: 100px;
+    background-color: #e3eeef;
+    border-radius: 5px;
+    box-shadow: -20px 0px 20px 0px rgba(191, 205, 216, 0.22), 14px 20px 20px 0px #dfdfe2;
+}
+.headerLogin {
+    background: linear-gradient(to top, #0272cc,#00b0ff);
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    text-align: center;
+    border-bottom: 2px solid hsl(25, 93%, 48%);
+    border-radius:2px 5px 0px 0px;
+}
+.pmp{
+    height:50px;
+}

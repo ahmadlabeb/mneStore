@@ -17,9 +17,10 @@ namespace mneStore.Controllers
     {
         private ApplicationEmployeeSignInManager _signInManager;
         private ApplicationEmployeeUserManager _userManager;
-
+        private mneStoreContext db;
         public AccountController()
         {
+            db = new mneStoreContext();
         }
 
         public AccountController(ApplicationEmployeeUserManager userManager, ApplicationEmployeeSignInManager signInManager )
@@ -75,7 +76,7 @@ namespace mneStore.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(model.EmployeeNumber, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -139,6 +140,7 @@ namespace mneStore.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.UserType = new SelectList(db.Roles.Where(a=>!a.Name.Contains("administrator")).ToList(),"Name","Name");
             return View();
         }
 
@@ -151,7 +153,8 @@ namespace mneStore.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationEmployeeUser { UserName = model.Email, Email = model.Email };
+                ViewBag.UserType = new SelectList(db.Roles.Where(a => !a.Name.Contains("administrator")).ToList(), "Name", "Name");
+                var user = new ApplicationEmployeeUser { UserName = model.UserName, Email = model.Email,UserType=model.UserType,EmployeeNumber=model.EmployeeNumber };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

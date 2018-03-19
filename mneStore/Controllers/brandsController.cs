@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using mneStore.Models;
@@ -57,7 +58,32 @@ namespace mneStore.Controllers
 
             return View(brand);
         }
+        [HttpPost]
+        public async Task<ActionResult> sendBrand(brand brand)
+        {
+            try
+            {
+                db.brands.Add(brand);
+                var task=db.SaveChangesAsync();
+                await task;
+                //if (ModelState.IsValid)
+                //{
+                //    //db.brands.Add(brand);
+                //    brand b = new brand();
+                //    b.nameBrand = brand.nameBrand;
+                //    db.brands.Add(b);
+                //    db.SaveChanges();
+                //}
+                return View();
 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+          
+        }
         // GET: brands/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create</h2>
@@ -10,88 +10,104 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-<div class="uk-form-horizontal uk-margin-large ">
-    <h4>items</h4>
-    <hr class="uk-divider-icon" />
-    @Html.ValidationSummary(true, "", new { @class = "uk-text-danger" })
-    <div class="uk-margin">
-        @Html.LabelFor(model => model.nameItem, htmlAttributes: new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.EditorFor(model => model.nameItem, new { htmlAttributes = new { @class = "uk-input" } })
-            @Html.ValidationMessageFor(model => model.nameItem, "", new { @class = "uk-text-danger" })
-        </div>
-    </div>
-
-    <div class="uk-margin">
-
-        @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.TextAreaFor(model => model.description, new { @class = "uk-textarea", @row = "5" })
-            @Html.ValidationMessageFor(model => model.description, "", new { @class = "uk-text-danger" })
-        </div>
-    </div>
-
-    <div class="uk-margin">
-        @Html.LabelFor(model => model.brandId, new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.DropDownList("brandId", null, new { @class = "uk-select" })
-            @Html.ValidationMessageFor(model => model.brandId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="uk-margin">
-        @Html.LabelFor(model => model.quantity, htmlAttributes: new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.EditorFor(model => model.quantity, new { htmlAttributes = new { @class = "uk-input" } })
-            @Html.ValidationMessageFor(model => model.quantity, "", new { @class = "uk-text-danger" })
-        </div>
-    </div>
-    <div class="uk-margin">
-        @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "uk-input" } })
-            @Html.ValidationMessageFor(model => model.price, "", new { @class = "uk-text-danger" })
-        </div>
-    </div>
-    <div class="uk-margin">
-        @Html.LabelFor(model => model.serialNamber, htmlAttributes: new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.EditorFor(model => model.serialNamber, new { htmlAttributes = new { @class = "uk-input" } })
-            @Html.ValidationMessageFor(model => model.serialNamber, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="uk-margin">
-        @Html.LabelFor(model => model.KindsId, new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.DropDownList("KindsId", null, new { @class = "uk-select" })
-            @Html.ValidationMessageFor(model => model.KindsId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="uk-margin">
-        @Html.LabelFor(model => model.UnitItemsId, new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.DropDownList("UnitItemsId", null, new { @class = "uk-select" })
-            @Html.ValidationMessageFor(model => model.UnitItemsId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="uk-margin">
-        @Html.LabelFor(model => model.barcode, htmlAttributes: new { @class = "uk-form-label" })
-        <div class="uk-form-controls">
-            @Html.EditorFor(model => model.barcode, new { htmlAttributes = new { @class = "uk-input" } })
-            @Html.ValidationMessageFor(model => model.barcode, "", new { @class = "uk-text-danger" })
+    <div class="form-horizontal">
+        <h4>items</h4>
+        <hr class="uk-divider-icon" />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.nameItem, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.nameItem, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nameItem, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-md-3">
+                @*@Html.LabelFor(model => model.KindsId, new { @class = "control-label col-md-2" })*@
+                <div class="">
+                    @Html.DropDownList("KindsId", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.KindsId, "", new { @class = "text-danger" })
+                </div>
+            </div>
         </div>
 
-    </div>
-    <hr />
-    <div class="uk-margin">
-        <div class="uk-form-controls">
-            <input type="submit" value="انشاء عنصر" class="uk-button uk-button-primary" />
-            <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف" uk-scrollspy="cls: uk-animation-slide-right; repeat: false">
-                <span uk-icon="icon: reply"></span>
-            </a>
-            @*              <input type="button" value="عنصر اضافي" id="create" class="uk-button uk-button-default" />*@
+        <div class="form-group">
+
+            @Html.LabelFor(model => model.description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.TextAreaFor(model => model.description, new { @class = "form-control", @row = "5" })
+                @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.brandId, new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @Html.DropDownList("brandId", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.brandId, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-default" id="markup">اضافة ماركة</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.quantity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @Html.EditorFor(model => model.quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.quantity, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group col-md-2">
+                @*@Html.LabelFor(model => model.UnitItemsId, new { @class = "control-label col-md-2" })*@
+                <div class="">
+                    @Html.DropDownList("UnitItemsId", null, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.UnitItemsId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-1">
+                <button class="btn btn-default" id="unitDialog">اضافة وحدة جديدة</button>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.price, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.serialNamber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.serialNamber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.serialNamber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.barcode, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.barcode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.barcode, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="انشاء عنصر" class="uk-button uk-button-primary" />
+                <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف" uk-scrollspy="cls: uk-animation-slide-right; repeat: false">
+                    <span uk-icon="icon: reply"></span>
+                </a>
+                @*              <input type="button" value="عنصر اضافي" id="create" class="uk-button uk-button-default" />*@
+            </div>
         </div>
     </div>
-</div>
 }
 @*@section script{
         <script>
@@ -105,10 +121,84 @@
         </script>
 
     }*@
-<div>
+<div id="dialog-mark" style="display:none;">
+     <form id="theForm">
+         <div class="form-horizontal">
+             <div class="form-group">
+                 <label for="nameBrand" class = "control-label col-md-2"> الماركة</label>
+                 @*@Html.LabelFor(model => model.nameBrand, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                 <div class="col-md-8">
+                     @Html.AntiForgeryToken()
+                     <input type="text" id="nameBrand" name="nameBrand" class="form-control" />
+                     @*@Html.TextBox("nameBrand",null,new { @class = "form-control" })*@
+                     @*@Html.EditorFor(model => model.nameBrand, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.nameBrand, "", new { @class = "text-danger" })*@
+                 </div>
+             </div>
 
+         </div>
+     </form>
 </div>
 @*<a href="~/bills/Edit/@Model.id" class="uk-button uk-button-default" uk-tooltip="تعديل مصدر الفاتورة" uk-scrollspy="cls: uk-animation-slide-left; repeat: false">تعديل الفاتورة</a>
-<a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف" uk-scrollspy="cls: uk-animation-slide-right; repeat: false">
-    <span uk-icon="icon: reply"></span>
-</a>*@
+    <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف" uk-scrollspy="cls: uk-animation-slide-right; repeat: false">
+        <span uk-icon="icon: reply"></span>
+    </a>*@
+@section scriptItems{
+    <link href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.10.2.js"></script>
+    <script src="~/Scripts/jquery-ui.js"></script>
+    <script>
+
+
+        $(document).ready(function () {
+            var urlBrands = '@Url.Action("sendBrand", "brands")';
+            $("#markup").click(function () {
+                $("#dialog-mark").dialog("open")
+            });
+             $("#dialog-mark").dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    width: 500,
+                    height: 300,
+                    title: "الماركة",
+                    buttons: {
+                        "انشاء": function () {
+                            $.ajax({
+                                url: urlBrands,
+                                type: "POST",
+                                data: $("theForm").serialize(),
+                                success: function () {
+                                    $("#dialog-mark").dialog("close");
+                                }
+                            });
+                        },
+                        "Close": function () {
+                            $(this).dialog("close");
+                        }
+                    }
+
+                    //close: function () {
+                    //    pubop.dialog("destroy").remove();
+                    //}
+                });
+
+        });
+        //var pubop;
+        //function addCurruncy(url) {
+        //    var fromdiv = $('<div/>');
+        //    $.get(url).done(function (response) {
+        //        fromdiv.html(response);
+        //        pubop = fromdiv.dialog({
+        //            autoOpen: true,
+        //            resizable: false,
+        //            title: "add carruncy",
+        //            height: 500,
+        //            width: 700,
+        //            close: function () {
+        //                pubop.dialog("destroy").remove();
+        //            }
+        //        });
+        //    });
+        //}
+    </script>
+}

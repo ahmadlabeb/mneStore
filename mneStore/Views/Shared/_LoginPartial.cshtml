@@ -1,22 +1,69 @@
 ﻿@using Microsoft.AspNet.Identity
+@using mneStore.Models
+
 @if (Request.IsAuthenticated)
 {
-    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
     {
-    @Html.AntiForgeryToken()
+        var db = new mneStoreContext();
+        var UserId = User.Identity.GetUserId();
+        var curruncyUser = db.Users.Where(a => a.Id == UserId).SingleOrDefault();
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        @*<ul class="nav navbar-nav navbar-right">
+                <li>
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                </li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+            </ul>*@
+
+
+        <ul>
+            <li>
+                <strong>مرحبا بك :@curruncyUser.UserName</strong>
+            </li>
+        </ul>
+        <ul class="uk-nav uk-nav-default">
+            <li class="uk-parent">
+            <li class="uk-nav-header">قائمة المهام</li>
+            @if (curruncyUser.UserType == "store")
+            {
+                <li>
+                    <ul class="uk-nav-sub">
+                        <li><a href="~/items/Index">المخزن</a></li>
+                    </ul>
+                </li>
+            }
+            else if (curruncyUser.UserType == "billls")
+            {
+                <li>
+                    <ul class="uk-nav-sub">
+                        <li><a href="~/bills/Index">الفواتير</a></li>
+                    </ul>
+                </li>
+            }
+            else if (curruncyUser.UserType == "admin")
+            {
+                <li>
+                    <ul class="uk-nav-sub">
+                        <li><a href="~/items/Index">المخزن</a></li>
+                        <li><a href="~/bills/Index">الفواتير</a></li>
+                    </ul>
+                </li>
+            }
+            <li class="uk-nav-header">خيارات </li>
+            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon: comments"></span> صندوق البريد </a></li>
+            <li><a href="#"><span class="uk-margin-small-right" uk-icon="icon:  settings"></span>اعدادات الحساب</a></li>
+            <li class="uk-nav-divider"></li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()"><span class="uk-margin-small-right" uk-icon="icon: sign-out"></span> تسجيل خروج</a></li>
+        </ul>
     }
 }
 else
 {
+    @*<h1>ليس لديك صلاحيات بالدخول يرجى التاكد من الصلاحياتك من الادارة</h1>*@
     <ul class="uk-navbar-nav">
-        <li class="uk-parent">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li class="uk-parent">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+            <li class="uk-parent">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li class="uk-parent">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
 }

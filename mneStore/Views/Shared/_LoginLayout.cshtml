@@ -19,7 +19,6 @@
                 </a>
             </div>
             <div class="uk-navbar-left">
-                @Html.Partial("_LoginPartial")
             </div>
 
         </nav>
@@ -45,17 +44,18 @@
                 <button class="uk-offcanvas-close" type="button" uk-close></button>
                 <header><h1 class="uk-text-center">نظام المخازن</h1></header>
                 <hr />
-                <ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
-                    <li class="uk-parent">
-                        <a href="~/bills/index">الفواتير</a>
-                        <ul class="uk-nav-sub">
-                            <li><a href="#" uk-toggle="target: #modal-overflow">ادخال فاتورة</a></li>
-                            <li><a href="~/items/Index"><span class="uk-margin-small-right" uk-icon="icon: table"></span> المخزن</a></li>
-                            <li><a href="~/bills/index"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span>قائمة الفواتير</a></li>
-                        </ul>
-                    </li>
-
+                @*<ul class="uk-nav uk-nav-primary uk-nav-center uk-margin-auto-vertical">
+            <li class="uk-parent">
+                <a href="~/bills/index">الفواتير</a>
+                <ul class="uk-nav-sub">
+                    <li><a href="#" uk-toggle="target: #modal-overflow">ادخال فاتورة</a></li>
+                    <li><a href="~/items/Index"><span class="uk-margin-small-right" uk-icon="icon: table"></span> المخزن</a></li>
+                    <li><a href="~/bills/index"><span class="uk-margin-small-right" uk-icon="icon: thumbnails"></span>قائمة الفواتير</a></li>
                 </ul>
+            </li>
+
+        </ul>*@
+                @Html.Partial("_LoginPartial")
 
             </div>
         </div>
@@ -112,5 +112,6 @@
 
         </div>
     </div>
+    @RenderSection("script")
 </body>
 </html>

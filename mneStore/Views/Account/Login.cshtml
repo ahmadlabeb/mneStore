@@ -17,10 +17,10 @@
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group">
-                        @Html.LabelFor(m => m.EmployeeNumber, new { @class = "col-md-4 control-label" })
+                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-4 control-label" })
                         <div class="col-md-5">
-                            @Html.TextBoxFor(m => m.EmployeeNumber, new { @class = "form-control" })
-                            @Html.ValidationMessageFor(m => m.EmployeeNumber, "", new { @class = "text-danger" })
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger" })
                         </div>
                     </div>
                     <div class="form-group">

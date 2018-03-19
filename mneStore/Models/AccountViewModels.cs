@@ -53,11 +53,12 @@ namespace mneStore.Models
         //[Display(Name = "اسم المستخدم")]
         //[EmailAddress]
         //public string Email { get; set; }
+        //[Required]
+        //[DisplayName("الرقم الوظيفي")]
+        //public int EmployeeNumber { get; set; }
         [Required]
-        [DisplayName("الرقم الوظيفي")]
-        [StringLength(6, ErrorMessage = "الرقم الوظيفي ستة ارقام", MinimumLength = 6)]
-        [MaxLength(6, ErrorMessage = "الرقم الوظيفي ستة ارقام")]
-        public string EmployeeNumber { get; set; }
+        [DisplayName("اسم المستخدم")]
+        public string UserName { get; set; }
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "كلمة المرور")]

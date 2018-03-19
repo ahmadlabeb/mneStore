@@ -16,6 +16,7 @@ namespace mneStore.Controllers
         private mneStoreContext db = new mneStoreContext();
 
         // GET: bills
+     
         public ActionResult Index()
         {
             return View(db.bills.ToList());

@@ -7,7 +7,7 @@ namespace mneStore.Models
 {
     public class RoleViewModel
     {
-        public string id { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
     }
 }

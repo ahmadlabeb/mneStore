@@ -7,13 +7,13 @@ namespace mneStore.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class authAccount : IMigrationMetadata
+    public sealed partial class ceatesTable : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(authAccount));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ceatesTable));
         
         string IMigrationMetadata.Id
         {
-            get { return "201803121043001_authAccount"; }
+            get { return "201803180639477_ceatesTable"; }
         }
         
         string IMigrationMetadata.Source

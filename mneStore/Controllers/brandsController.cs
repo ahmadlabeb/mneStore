@@ -58,32 +58,32 @@ namespace mneStore.Controllers
 
             return View(brand);
         }
-        [HttpPost]
-        public async Task<ActionResult> sendBrand(brand brand)
-        {
-            try
-            {
-                db.brands.Add(brand);
-                var task=db.SaveChangesAsync();
-                await task;
-                //if (ModelState.IsValid)
-                //{
-                //    //db.brands.Add(brand);
-                //    brand b = new brand();
-                //    b.nameBrand = brand.nameBrand;
-                //    db.brands.Add(b);
-                //    db.SaveChanges();
-                //}
-                return View();
+        //[HttpPost]
+        //public async Task<ActionResult> sendBrand(brand brand)
+        //{
+        //    try
+        //    {
+        //        db.brands.Add(brand);
+        //        var task=db.SaveChangesAsync();
+        //        await task;
+        //        //if (ModelState.IsValid)
+        //        //{
+        //        //    //db.brands.Add(brand);
+        //        //    brand b = new brand();
+        //        //    b.nameBrand = brand.nameBrand;
+        //        //    db.brands.Add(b);
+        //        //    db.SaveChanges();
+        //        //}
+        //        return View();
 
-            }
-            catch (Exception ex)
-            {
+        //    }
+        //    catch (Exception ex)
+        //    {
 
-                throw ex;
-            }
+        //        throw ex;
+        //    }
           
-        }
+        //}
         // GET: brands/Edit/5
         public ActionResult Edit(int? id)
         {

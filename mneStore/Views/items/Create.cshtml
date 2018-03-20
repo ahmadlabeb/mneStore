@@ -41,11 +41,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.brandId, new { @class = "control-label col-md-2" })
             <div class="col-md-7">
-                @Html.DropDownList("brandId", null, new { @class = "form-control" })
+                @Html.DropDownList("brandId", null, new { @class = "form-control", id= "brandId" })
                 @Html.ValidationMessageFor(model => model.brandId, "", new { @class = "text-danger" })
             </div>
             <div class="col-md-2">
-                <button class="btn btn-default" id="markup">اضافة ماركة</button>
+                <a class="btn btn-default" id="markup">اضافة ماركة</a>
             </div>
         </div>
 
@@ -65,7 +65,7 @@
             </div>
 
             <div class="col-md-1">
-                <button class="btn btn-default" id="unitDialog">اضافة وحدة جديدة</button>
+                <a class="btn btn-default" id="unitDialog">اضافة وحدة جديدة</a>
             </div>
         </div>
 
@@ -122,22 +122,37 @@
 
     }*@
 <div id="dialog-mark" style="display:none;">
-     <form id="theForm">
-         <div class="form-horizontal">
-             <div class="form-group">
-                 <label for="nameBrand" class = "control-label col-md-2"> الماركة</label>
-                 @*@Html.LabelFor(model => model.nameBrand, htmlAttributes: new { @class = "control-label col-md-2" })*@
-                 <div class="col-md-8">
-                     @Html.AntiForgeryToken()
-                     <input type="text" id="nameBrand" name="nameBrand" class="form-control" />
-                     @*@Html.TextBox("nameBrand",null,new { @class = "form-control" })*@
-                     @*@Html.EditorFor(model => model.nameBrand, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.nameBrand, "", new { @class = "text-danger" })*@
-                 </div>
-             </div>
+    @*@using (Html.BeginForm("sendBrand", "items", FormMethod.Post, new { id = "theForm" }))
+        {*@
+    <form id="theFormBrand">
+        <div class="form-horizontal col-md-10">
+            <div class="form-group">
+                <label for="nameBrand" class="control-label col-md-2"> الماركة</label>
+                @*@Html.LabelFor(model => model.nameBrand, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-7">
+                    <input type="text" id="nameBrand" name="nameBrand" class="form-control" />
+                    @Html.ValidationMessage("nameBrand",new {@class="text-danger" })
+                    @*@Html.TextBox("nameBrand",null,new { @class = "form-control" })*@
+                    @*@Html.EditorFor(model => model.nameBrand, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.nameBrand, "", new { @class = "text-danger" })*@
+                </div>
+            </div>
 
-         </div>
-     </form>
+        </div>
+    </form>
+
+</div>
+<div id="dialog-NameUnit" style="display:none;">
+    <form id="theFormKinds">
+        <div class="form-horizontal col-md-10">
+            <div class="form-group">
+                <label class="control-label col-md-2">الوحدة</label>
+                <div class="col-md-7">
+                    <input type="text" id="NameUnit" name="NameUnit" class="form-control" />
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 @*<a href="~/bills/Edit/@Model.id" class="uk-button uk-button-default" uk-tooltip="تعديل مصدر الفاتورة" uk-scrollspy="cls: uk-animation-slide-left; repeat: false">تعديل الفاتورة</a>
     <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف" uk-scrollspy="cls: uk-animation-slide-right; repeat: false">
@@ -147,58 +162,33 @@
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery-ui.js"></script>
-    <script>
-
-
-        $(document).ready(function () {
-            var urlBrands = '@Url.Action("sendBrand", "brands")';
-            $("#markup").click(function () {
-                $("#dialog-mark").dialog("open")
-            });
-             $("#dialog-mark").dialog({
-                    autoOpen: true,
-                    resizable: false,
-                    width: 500,
-                    height: 300,
-                    title: "الماركة",
-                    buttons: {
-                        "انشاء": function () {
-                            $.ajax({
-                                url: urlBrands,
-                                type: "POST",
-                                data: $("theForm").serialize(),
-                                success: function () {
-                                    $("#dialog-mark").dialog("close");
-                                }
-                            });
-                        },
-                        "Close": function () {
-                            $(this).dialog("close");
-                        }
+    <script src="~/Scripts/dialogInputData.js"></script>
+    @*<script>
+        $(function () {
+            $(window).load(function () {
+                $.ajax({
+                    url: "/items/GetBrand",
+                    type: "GET",
+                    dataType:"json",
+                    success: function (data) {
+                        $.each(data, function (indx, row) {
+                            $("#brandId").append("<option value='" + row.id + "'>" + row.nameBrand + "</option>");
+                        });
                     }
-
-                    //close: function () {
-                    //    pubop.dialog("destroy").remove();
-                    //}
                 });
-
-        });
-        //var pubop;
-        //function addCurruncy(url) {
-        //    var fromdiv = $('<div/>');
-        //    $.get(url).done(function (response) {
-        //        fromdiv.html(response);
-        //        pubop = fromdiv.dialog({
-        //            autoOpen: true,
-        //            resizable: false,
-        //            title: "add carruncy",
-        //            height: 500,
-        //            width: 700,
-        //            close: function () {
-        //                pubop.dialog("destroy").remove();
-        //            }
-        //        });
-        //    });
-        //}
-    </script>
+            //    $.ajax({
+            //        url: "/items/GetBrand",
+            //        type: "GET",
+            //        contentType: "application/json; charset=utf-8",
+            //        dataType: "json",
+            //        success: function (data) {
+            //            for (var i = 0; i < data.length; i++) {
+            //                var options = new Option(data[i].nameBrand);
+            //                $("#brandId").append(options);
+            //            }
+            //        }
+            //    });
+            //});
+         });
+    </script>*@
 }

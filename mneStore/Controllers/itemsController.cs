@@ -72,6 +72,29 @@ namespace mneStore.Controllers
             return View();
         }
 
+        public JsonResult sendBrand(brand brand)
+        {
+            if (ModelState.IsValid)
+            {
+                db.brands.Add(brand);
+                db.SaveChanges();
+            }
+            return Json(brand);
+        }
+
+        public JsonResult sendUnitItems(UnitItems unitItems)
+        {
+            if (ModelState.IsValid)
+            {
+                db.UnitItems.Add(unitItems);
+                db.SaveChanges();
+            }
+            return Json(unitItems);
+        }
+        public JsonResult GetBrand()
+        {
+            return Json(db.brands.ToList(), JsonRequestBehavior.AllowGet);
+        }
         // POST: items/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

@@ -190,6 +190,7 @@
     <Content Include="Scripts\button.js" />
     <Content Include="Scripts\carousel-rtl.js" />
     <Content Include="Scripts\collapse.js" />
+    <Content Include="Scripts\dialogInputData.js" />
     <Content Include="Scripts\dropdown.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -249,6 +250,10 @@
     <Compile Include="Migrations\201803180639477_ceatesTable.cs" />
     <Compile Include="Migrations\201803180639477_ceatesTable.Designer.cs">
       <DependentUpon>201803180639477_ceatesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803201244497_dsfsdf.cs" />
+    <Compile Include="Migrations\201803201244497_dsfsdf.Designer.cs">
+      <DependentUpon>201803201244497_dsfsdf.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -333,6 +338,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803180639477_ceatesTable.resx">
       <DependentUpon>201803180639477_ceatesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803201244497_dsfsdf.resx">
+      <DependentUpon>201803201244497_dsfsdf.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -8,44 +8,50 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="uk-form-horizontal uk-margin-large" >
+    <div class="form-horizontal">
         <h4>فاتورة</h4>
         <hr class="uk-divider-icon">
-        @Html.ValidationSummary(true, "", new { @class = "uk-text-danger" })
-        <div class="uk-margin">
-            @Html.LabelFor(model => model.nameBuy, htmlAttributes: new { @class = "uk-form-label" })
-            <div class="uk-form-controls">
-                @Html.EditorFor(model => model.nameBuy, new { htmlAttributes = new { @class = "uk-input" } })
-                @Html.ValidationMessageFor(model => model.nameBuy, "", new { @class = "uk-text-danger" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.nameBuy, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.nameBuy, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.nameBuy, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="uk-margin">
-            @Html.LabelFor(model => model.billNumber, htmlAttributes: new { @class = "uk-form-label" })
-            <div class="uk-form-controls">
-                @Html.EditorFor(model => model.billNumber, new { htmlAttributes = new { @class = "uk-input" } })
-                @Html.ValidationMessageFor(model => model.billNumber, "", new { @class = "uk-text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.billNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.billNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.billNumber, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="uk-margin">
-            @Html.LabelFor(model => model.currunciesId, htmlAttributes: new { @class = "uk-form-label" })
-            <div class="uk-form-controls">
-                @Html.DropDownList("currunciesId", null, htmlAttributes: new { @class = "uk-select" })
-                @Html.ValidationMessageFor(model => model.currunciesId, "", new { @class = "uk-text-danger" })
-                <a href="#" id="dialog-modal" @*onclick="'@Url.Action("Create","Curruncies")'"*@ class="uk-button" style="background-color:#00ff90">show</a>
+        <div class="form-group">
+            @Html.LabelFor(model => model.currunciesId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-7">
+                @Html.DropDownList("currunciesId", null, htmlAttributes: new { @class = "form-control", id = "currunciesId" })
+                @* <select class="form-control" id="currunciesId" name="currunciesId">*@
+
+                @*</select>*@
+                @Html.ValidationMessageFor(model => model.currunciesId, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-2">
+                <a id="dialog-curruncy" @*onclick="'@Url.Action("Create","Curruncies")'"*@ class="btn btn-primary">عملة جديدة</a>
+
             </div>
         </div>
-        <div class="uk-margin">
-            @Html.LabelFor(model => model.dateBill, htmlAttributes: new { @class = "uk-form-label" })
-            <div class="uk-form-controls">
-                @Html.EditorFor(model => model.dateBill, new { htmlAttributes = new { @class = "uk-input" ,@id="datePiker"} })
-                @Html.ValidationMessageFor(model => model.dateBill, "", new { @class = "uk-text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.dateBill, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-lg-10">
+                @Html.EditorFor(model => model.dateBill, new { htmlAttributes = new { @class = "form-control", @id = "datePiker" } })
+                @Html.ValidationMessageFor(model => model.dateBill, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="uk-margin">
-            <div class="uk-form-controls">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="انشاء" class="uk-button uk-button-primary" />
                 <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف">
                     <span uk-icon="icon: reply"></span>
@@ -56,21 +62,108 @@
     </div>
 }
 
-<div id="dialog" style="display:none;" >
-   
+<div id="dialogCurruncy" style="display:none;">
+    <div class="form-inline">
+        <form id="theFormCurruncy">
+            <label for="nameUnit">وحدة</label>
+            <input type="text" id="nameUnit" name="nameUnit" class="form-control" />
+        </form>
+    </div>
 </div>
 @section script{
     <link href="~/Content/jquery-ui.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.10.2.js"></script>
     <script src="~/Scripts/jquery-ui.js"></script>
     <script>
-        
+
         //$(function () {
 
         //});
         $(function () {
-           
-            $("#dialog-modal").click(function () {
+            $(window).load(function () {
+                relodCurruncy();
+                //var urlCurr = '/bills/getCurruncy'
+                //$.ajax({
+                //    url: urlCurr,
+                //    type: "GET",
+                //    data: {},
+                //    contentType: "application/json; charset=utf-8",
+                //    dataType: "json",
+                //    success: function (response) {
+                //        $.each(response, function (index, item) {
+                //            $("#currunciesId").append('<option value="' + index + '">' + item + '</option>');
+
+                //        })
+                //        for (var i = 0; i < response.length; i++) {
+                //            //var options = new Option(response[i].nameUnit);
+                //        }
+                //    }
+                //}).done(function (response) {
+                //    console.log(response.message);
+                //});
+            });
+            $("#dialog-curruncy").click(function () {
+                $("#dialogCurruncy").dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    modal: true,
+                    width: 500,
+                    height: 200,
+                    title: "عملة جديدة",
+                    buttons: [
+                        {
+                        text: "انشاء",
+                        "class": 'btn btn-primary',
+                        click: function () {
+                            $.ajax({
+                                url: "/bills/sendCurruncy",
+                                type: "post",
+                                data: { nameUnit: $("#nameUnit").val() },
+                                success: function (data) {
+                                    let nameUnit = $("#nameUnit").val();
+                                    if (nameUnit === '' || nameUnit === NaN || nameUnit === isNaN()) {
+                                        UIkit.notification({
+                                            message: 'من فضلك ادخل عملة',
+                                            status: 'danger',
+                                            pos: 'top-right',
+                                            timeout: 5000
+                                        });
+
+                                    } else {
+
+                                        UIkit.notification({
+                                            message: 'تم التخزين العملة بنجاح',
+                                            status: 'success',
+                                            pos: 'top-right',
+                                            timeout: 5000
+                                        });
+                                        $("#dialogCurruncy").dialog("close");
+
+                                    }
+                                }
+                            }).done(function (response) {
+                                relodCurruncy();
+
+                            });
+                        }
+                    }, {
+                            text: "اغلاق",
+                            "class":'btn btn-danger',
+                            click: function () {
+                            $(this).dialog("close");
+                        }
+                    }
+                    ], show: {
+                        effect: "bounce",
+                        duration: 1000
+                    },
+                    hide: {
+                        effect: "fade",
+                        duration: 1000
+                    }
+                });
+            });
+            @*$("#dialog-modal").click(function () {
                 $("#dialog").dialog({
                     autoOpen: true,
                     resizable: false,
@@ -98,13 +191,32 @@
                     //    pubop.dialog("destroy").remove();
                     //}
                 });
-            });
-          
-            $("#datePiker").datepicker({
-                dateFormat: 'dd/mm/yy' 
-            });
+            });*@
 
+            $("#datePiker").datepicker({
+                dateFormat: 'dd/mm/yy'
+            });
+            var relodCurruncy = function () {
+                var urlCurr = '/bills/getCurruncy'
+                $.ajax({
+                    url: urlCurr,
+                    type: "GET",
+                    //data: {},
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        $.each(response, function (index, item) {
+                            $("#currunciesId").append('<option value="' + index + '">' + item + '</option>');
+
+                        })
+                        //for (var i = 0; i < response.length; i++) {
+                        //    //var options = new Option(response[i].nameUnit);
+                        //}
+                    }
+                });
+            }
         });
+
         //var pubop;
         //function addCurruncy(url) {
         //    var fromdiv = $('<div/>');

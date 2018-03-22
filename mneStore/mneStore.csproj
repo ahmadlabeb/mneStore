@@ -328,6 +328,7 @@
     <Content Include="Views\Roles\Details.cshtml" />
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\items\NewAction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

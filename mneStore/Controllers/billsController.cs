@@ -90,7 +90,20 @@ namespace mneStore.Controllers
             ViewBag.currunciesId = new SelectList(db.curruncies, "id", "nameUnit", bills.currunciesId);
             return View(bills);
         }
-
+        public JsonResult sendCurruncy(Curruncies curruncies)
+        {
+            if (ModelState.IsValid)
+            {
+                db.curruncies.Add(curruncies);
+                db.SaveChanges();
+            }
+            return Json(curruncies);
+        }
+        public JsonResult getCurruncy()
+        {
+            var result = from crr in db.curruncies select crr.nameUnit;
+            return Json(result.ToList(),JsonRequestBehavior.AllowGet);
+        }
         
         [HttpPost]
         [ValidateAntiForgeryToken]

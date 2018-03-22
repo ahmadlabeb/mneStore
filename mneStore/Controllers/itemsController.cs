@@ -114,7 +114,10 @@ namespace mneStore.Controllers
             ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand",items.brandId);
             return View(items);
         }
-
+       public ActionResult NewAction()
+        {
+            return View();
+        }
         // GET: items/Edit/5
         public ActionResult Edit(int? id)
         {

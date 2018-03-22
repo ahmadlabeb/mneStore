@@ -264,6 +264,11 @@
     <Compile Include="Models\items.cs" />
     <Compile Include="Models\Kinds.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Models\RoleViewModel.cs" />
     <Compile Include="Models\UnitItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -342,6 +347,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803201244497_dsfsdf.resx">
       <DependentUpon>201803201244497_dsfsdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Models\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

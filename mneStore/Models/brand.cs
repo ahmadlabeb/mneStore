@@ -10,6 +10,7 @@ namespace mneStore.Models
     {
         public int id { get; set; }
         [Required]
+        [Display(Name = "nameBrand",ResourceType =typeof(Resource))]
         public string nameBrand { get; set; }
         public virtual ICollection<items> items { get; set; }
     }

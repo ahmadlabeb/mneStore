@@ -196,25 +196,25 @@
             $("#datePiker").datepicker({
                 dateFormat: 'dd/mm/yy'
             });
-            var relodCurruncy = function () {
-                var urlCurr = '/bills/getCurruncy'
-                $.ajax({
-                    url: urlCurr,
-                    type: "GET",
-                    //data: {},
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function (response) {
-                        $.each(response, function (index, item) {
-                            $("#currunciesId").append('<option value="' + index + '">' + item + '</option>');
+            //var relodCurruncy = function () {
+            //    var urlCurr = '/bills/getCurruncy'
+            //    $.ajax({
+            //        url: urlCurr,
+            //        type: "GET",
+            //        //data: {},
+            //        contentType: "application/json; charset=utf-8",
+            //        dataType: "json",
+            //        success: function (response) {
+            //            $.each(response, function (index, item) {
+            //                $("#currunciesId").append('<option value="' + index + '">' + item + '</option>');
 
-                        })
-                        //for (var i = 0; i < response.length; i++) {
-                        //    //var options = new Option(response[i].nameUnit);
-                        //}
-                    }
-                });
-            }
+            //            })
+            //            //for (var i = 0; i < response.length; i++) {
+            //            //    //var options = new Option(response[i].nameUnit);
+            //            //}
+            //        }
+            //    });
+            //}
         });
 
         //var pubop;

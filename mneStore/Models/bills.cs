@@ -11,15 +11,15 @@ namespace mneStore.Models
     {
         public int id { get; set; }
         [Required]
-        [DisplayName("المورد/شركة")]
+        [Display(Name ="nameBuy",ResourceType =typeof(Resource))]
         public string nameBuy { get; set; }
         [Required]
-        [DisplayName("رقم الفاتورة")]
+        [Display(Name = "billNumber", ResourceType = typeof(Resource))]
         public string billNumber { get; set; }
         [Required]
-        [DisplayName("تاريخ الفاتورة")]
+        [Display(Name = "dateBill", ResourceType = typeof(Resource))]
         public DateTime dateBill { get; set; }
-        [DisplayName("العملة")]
+        [Display(Name = "currunciesId", ResourceType = typeof(Resource))]
         public int currunciesId { get; set; }
         public virtual Curruncies curruncies { get; set; }
 

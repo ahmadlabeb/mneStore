@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@using mneStore.Models;
 <h3>تفاصيل الفاتوورة</h3>
 <hr class="uk-divider-icon">
 <div class="uk-grid-collapse uk-child-width-expand@s uk-text-center" uk-grid>
@@ -28,7 +28,8 @@
 </div>
 <div style="text-align:center">
     <h2>
-        مستند ادخال اللوازم
+        @Resource.Documents
+        @*مستند ادخال اللوازم*@
     </h2>
 </div>
 <div class="uk-grid-collapse uk-child-width-expand@s" uk-grid uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
@@ -74,7 +75,7 @@
     <table class="uk-table uk-table-hover uk-table-divider uk-table-justify uk-table-responsive table-shadow ">
         <thead>
             <tr>
-                <th>اسم العنصر</th>
+                <th>@Resource.nameItem</th>
                 <th>وصف العنصر</th>
                 <th>الماركة</th>
                 <th>الوحدة</th>

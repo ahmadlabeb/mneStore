@@ -133,10 +133,10 @@
     <value>الماركة</value>
   </data>
   <data name="nameItem" xml:space="preserve">
-    <value>اسم العنص</value>
+    <value>اسم العنصر</value>
   </data>
   <data name="price" xml:space="preserve">
-    <value>سعر الوحدة</value>
+    <value>السعر</value>
   </data>
   <data name="quantity" xml:space="preserve">
     <value>الكمية رقماً</value>
@@ -146,5 +146,20 @@
   </data>
   <data name="UnitItemsId" xml:space="preserve">
     <value>الوحدة</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>مستند ادخال اللوازم</value>
+  </data>
+  <data name="billNumber" xml:space="preserve">
+    <value>رقم الفاتورة</value>
+  </data>
+  <data name="currunciesId" xml:space="preserve">
+    <value>العملة</value>
+  </data>
+  <data name="dateBill" xml:space="preserve">
+    <value>تاريخ الفاتورة</value>
+  </data>
+  <data name="nameBuy" xml:space="preserve">
+    <value>الشركة/المورد</value>
   </data>
 </root>

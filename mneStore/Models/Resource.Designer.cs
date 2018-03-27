@@ -70,6 +70,15 @@ namespace mneStore.Models {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to رقم الفاتورة.
+        /// </summary>
+        public static string billNumber {
+            get {
+                return ResourceManager.GetString("billNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to الماركة.
         /// </summary>
         public static string brandId {
@@ -79,11 +88,38 @@ namespace mneStore.Models {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to العملة.
+        /// </summary>
+        public static string currunciesId {
+            get {
+                return ResourceManager.GetString("currunciesId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تاريخ الفاتورة.
+        /// </summary>
+        public static string dateBill {
+            get {
+                return ResourceManager.GetString("dateBill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to وصف العنصر.
         /// </summary>
         public static string description {
             get {
                 return ResourceManager.GetString("description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مستند ادخال اللوازم.
+        /// </summary>
+        public static string Documents {
+            get {
+                return ResourceManager.GetString("Documents", resourceCulture);
             }
         }
         
@@ -106,7 +142,16 @@ namespace mneStore.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to اسم العنص.
+        ///   Looks up a localized string similar to الشركة/المورد.
+        /// </summary>
+        public static string nameBuy {
+            get {
+                return ResourceManager.GetString("nameBuy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to اسم العنصر.
         /// </summary>
         public static string nameItem {
             get {
@@ -115,7 +160,7 @@ namespace mneStore.Models {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to سعر الوحدة.
+        ///   Looks up a localized string similar to السعر.
         /// </summary>
         public static string price {
             get {

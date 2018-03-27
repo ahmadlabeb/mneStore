@@ -7,6 +7,7 @@
         $("#dialog-mark").dialog({
             autoOpen: true,
             resizable: false,
+            modal: true,
             width: 500,
             height: 180,
             title: "الماركة",
@@ -19,7 +20,7 @@
                         data: { nameBrand: $("#nameBrand").val() },
                         success: function (data) {
                             let nameBarnds = $("#nameBrand").val();
-                            if (nameBarnds === '' || nameBarnds == NaN || nameBarnds === isNaN()) {
+                            if (nameBarnds === '' || nameBarnds === isNaN()) {
                                 UIkit.notification({
                                     message: 'من فضلك ادخل الماركة',
                                     status: 'danger',
@@ -68,6 +69,7 @@
             autoOpen: true,
             resizable: false,
             width: 500,
+            modal: true,
             height: 200,
             title: "الوحدة",
             buttons: {

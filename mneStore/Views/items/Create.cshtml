@@ -13,17 +13,21 @@
         <hr class="uk-divider-icon" />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.nameItem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-7">
-                @Html.DropDownList("idNameItems",null, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.nameItem, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.idNameItems, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("idNameItems", null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idNameItems, "", new { @class = "text-danger" })
             </div>
-            <div class="form-group col-md-3">
+
+            <div class="col-md-3">
                 @*@Html.LabelFor(model => model.KindsId, new { @class = "control-label col-md-2" })*@
                 <div class="">
                     @Html.DropDownList("KindsId", null, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.KindsId, "", new { @class = "text-danger" })
                 </div>
+            </div>
+            <div class="col-md-1">
+                <a class="btn btn-primary" id="create-items">اضافة عنصر</a>
             </div>
         </div>
 
@@ -152,6 +156,16 @@
         </div>
     </form>
 </div>
+<div id="dialog-nameItems" style="display:none;">
+    <form id="theFormItems">
+        <div class="form-inline">
+            <label for="nameOfItems" class="control-label">عنصر جديد</label>
+            <div class="col-md-7">
+                <input type="text" id="nameOfItems" name="nameOfItems" class="form-control" />
+            </div>
+        </div>
+    </form>
+</div>
 @*<a href="~/bills/Edit/@Model.id" class="uk-button uk-button-default" uk-tooltip="تعديل مصدر الفاتورة" uk-scrollspy="cls: uk-animation-slide-left; repeat: false">تعديل الفاتورة</a>
     <a href="~/bills/Index" class="uk-button uk-button-secondary" uk-tooltip="الى الخلف" uk-scrollspy="cls: uk-animation-slide-right; repeat: false">
         <span uk-icon="icon: reply"></span>
@@ -162,6 +176,68 @@
     <script src="~/Scripts/jquery-ui.js"></script>
 
     <script src="~/Scripts/dialogInputData.js"></script>
+    <script>
+        $(function () {
+            var urlNameItems = '/items/sendsNameItems';
+            $("#create-items").on('click', function () {
+                $("#dialog-nameItems").dialog({
+                    autoOpen: true,
+                    resizable: false,
+                    modal: true,
+                    width: 500,
+                    height: 180,
+                    title: "وحدة جديدة",
+                    buttons: {
+                        "انشاء عنصر جديد": function () {
+                            $.ajax({
+                                url: urlNameItems,
+                                method: "POST",
+                                data: { nameOfItems: $("#nameOfItems").val() },
+                                success: function () {
+                                    let nameOfItems = $("#nameOfItems").val();
+                                    if (nameOfItems === '' || nameOfItems === isNaN()) {
+                                        //$(this).effect("bounce", { width: 200, height: 60 }, 500);
+                                        UIkit.notification({
+                                            message: 'من فضلك ادخل عنصر جديد',
+                                            status: 'danger',
+                                            pos: 'top-right',
+                                            timeout: 5000
+                                        });
+
+                                    } else {
+
+                                        UIkit.notification({
+                                            message: 'تم التخزين العنصر بنجاح',
+                                            status: 'success',
+                                            pos: 'top-right',
+                                            timeout: 5000
+                                        });
+                                        $("#dialog-nameItems").dialog("close");
+                                    }
+                                }
+                            }).done(function (msg) {
+                                console.log(msg);
+                            });
+                        },
+                        "اغلاق": function () {
+                            $(this).dialog("close");
+
+                        }
+
+                    }, show: {
+                        effect: "bounce",
+                        duration: 2000
+                    },
+                    hide: {
+                        effect: "fade",
+                        duration: 1000
+                    }
+
+
+                });
+            });
+        })(jQuery);
+    </script>
     @*<script>
             $(function () {
                 $(window).load(function () {

@@ -96,6 +96,15 @@ namespace mneStore.Controllers
         {
             return Json(db.brands.ToList(), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult sendsNameItems(NameItems nameItems)
+        {
+            if (ModelState.IsValid)
+            {
+                db.nameItems.Add(nameItems);
+                db.SaveChanges();
+            }
+            return Json(nameItems);
+        }
         // POST: items/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.

@@ -40,7 +40,7 @@ namespace mneStore.Models
         public System.Data.Entity.DbSet<mneStore.Models.UnitItems> UnitItems { get; set; }
 
         public System.Data.Entity.DbSet<mneStore.Models.brand> brands { get; set; }
-
+        public DbSet<mneStore.Models.NameItems>  nameItems { get; set; }
         //public System.Data.Entity.DbSet<mneStore.Models.RoleViewModel> RoleViewModels { get; set; }
     }
 }

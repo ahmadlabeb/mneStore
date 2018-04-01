@@ -13,7 +13,7 @@ namespace mneStore.Models
         public int id { get; set; }
         [Required]
         [Display(Name = "nameItem",ResourceType =typeof(Resource))]
-        public string nameItem { get; set; }
+        public int idNameItems { get; set; }
         [Required]
         [Display(Name ="description",ResourceType =typeof(Resource))]
         public string description { get; set; }
@@ -32,7 +32,8 @@ namespace mneStore.Models
         [Required]
         [Display(Name ="price", ResourceType = typeof(Resource))]
         public decimal price { get; set; }
-
+        [ForeignKey("idNameItems")]
+        public virtual NameItems nameItem { get; set; }
 
         public int billsId { get; set; }
         [Display(Name ="KindsId", ResourceType = typeof(Resource))]

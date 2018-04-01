@@ -25,7 +25,7 @@ namespace mneStore.Controllers
                                select s;
                 if (!String.IsNullOrEmpty(searchString))
                 {
-                    iteme = iteme.Where(s => s.nameItem.Contains(searchString)
+                    iteme = iteme.Where(s => s.nameItem.nameOfItems.Contains(searchString)
                                            || s.barcode.Contains(searchString));
                 }
                 switch (index)
@@ -69,6 +69,7 @@ namespace mneStore.Controllers
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind");
             ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit");
             ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand");
+            ViewBag.idNameItems = new SelectList(db.nameItems, "id", "nameOfItems");
             return View();
         }
 
@@ -112,6 +113,7 @@ namespace mneStore.Controllers
             ViewBag.KindsId = new SelectList(db.kinds, "id", "nameKind",items.KindsId);
             ViewBag.UnitItemsId = new SelectList(db.UnitItems, "id", "NameUnit", items.UnitItemsId);
             ViewBag.brandId = new SelectList(db.brands, "id", "nameBrand",items.brandId);
+            ViewBag.idNameItems = new SelectList(db.nameItems, "id", "nameOfItems",items.idNameItems);
             return View(items);
         }
        public ActionResult NewAction()

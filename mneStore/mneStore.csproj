@@ -260,6 +260,10 @@
     <Compile Include="Migrations\201803201244497_dsfsdf.Designer.cs">
       <DependentUpon>201803201244497_dsfsdf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804010822523_lookuptable.cs" />
+    <Compile Include="Migrations\201804010822523_lookuptable.Designer.cs">
+      <DependentUpon>201804010822523_lookuptable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\bills.cs" />
@@ -269,6 +273,7 @@
     <Compile Include="Models\items.cs" />
     <Compile Include="Models\Kinds.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NameItems.cs" />
     <Compile Include="Models\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -352,6 +357,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803201244497_dsfsdf.resx">
       <DependentUpon>201803201244497_dsfsdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804010822523_lookuptable.resx">
+      <DependentUpon>201804010822523_lookuptable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Models\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
